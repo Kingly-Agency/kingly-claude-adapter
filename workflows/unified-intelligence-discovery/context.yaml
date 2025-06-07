@@ -1,0 +1,133 @@
+metadata:
+  type: "workflow"
+  id: "unified-intelligence-discovery"
+  version: "1.0.0"
+  author: "@kingly/system"
+  description: "Smart discovery across agents, synths, workflows, and patterns"
+
+workflow:
+  name: "Unified Intelligence Discovery"
+  trigger: "$agent discover <topic>"
+  
+  steps:
+    1_parse_intent:
+      description: "Analyze user request for intent and context"
+      actions:
+        - extract_keywords: "Parse <topic> for key terms"
+        - detect_intent: "Identify user goal (solve, learn, create, analyze)"
+        - assess_complexity: "Determine if single vs multi-resource solution"
+        - get_context: "Check recent conversation for additional clues"
+      outputs:
+        - intent_type
+        - keywords_list
+        - complexity_level
+        - context_hints
+        
+    2_search_all_sources:
+      description: "Scan all intelligence sources simultaneously"
+      parallel_search:
+        agents:
+          - scan: "contexts/agents/"
+          - match: "descriptions, capabilities, persona"
+          - score: "relevance to keywords + intent"
+        synths:
+          - scan: "synths/"
+          - match: "agent persona, core expertise, naming philosophy"
+          - score: "domain alignment + freshness"
+        workflows:
+          - scan: "workflows/"
+          - match: "name, description, steps, use cases"
+          - score: "process fit + automation potential"
+        patterns:
+          - scan: "contexts/patterns/"
+          - match: "thinking frameworks, problem types"
+          - score: "cognitive fit + reusability"
+      outputs:
+        - ranked_agents
+        - ranked_synths
+        - ranked_workflows
+        - ranked_patterns
+        
+    3_intelligent_ranking:
+      description: "LLM-powered relevance scoring and recommendation"
+      actions:
+        - cross_reference: "Find complementary resources"
+        - assess_combinations: "Identify powerful resource combinations"
+        - check_dependencies: "Ensure all prerequisites available"
+        - predict_effectiveness: "Estimate success probability"
+      scoring_criteria:
+        - domain_expertise: "How well does resource match topic?"
+        - availability: "Is resource ready to use immediately?"
+        - completeness: "Will this fully solve the request?"
+        - learning_value: "Educational benefit for user"
+        - efficiency: "Speed of execution"
+      outputs:
+        - top_recommendations
+        - combination_suggestions
+        - learning_opportunities
+        
+    4_generate_recommendations:
+      description: "Create smart recommendation display"
+      format:
+        primary_recommendation:
+          - resource_type: "agent/synth/workflow/pattern"
+          - resource_name: "specific resource"
+          - quick_code: "1a, 4c, etc."
+          - confidence: "85%"
+          - why: "Brief explanation of fit"
+          - how_to_use: "Exact command to activate"
+        
+        alternatives:
+          - list: "2-3 alternative approaches"
+          - combinations: "Multi-resource solutions"
+          - learning_path: "Progressive skill building"
+          
+        discovery_insights:
+          - gaps: "What's missing in current intelligence"
+          - suggestions: "Resources to create/promote"
+          - patterns: "Recurring user needs"
+      
+    5_track_usage:
+      description: "Learn from discovery patterns"
+      actions:
+        - log_search: "Record search terms + results"
+        - track_selections: "Which recommendations get used"
+        - measure_effectiveness: "Success rate of recommendations"
+        - identify_gaps: "Frequently requested but missing resources"
+      outputs:
+        - usage_analytics
+        - gap_analysis
+        - improvement_suggestions
+        
+  advanced_features:
+    semantic_understanding:
+      - "I need help with branding" → marketing-branding-wizard (4a) + brand-naming-research (5b)
+      - "How do I approach this problem" → cognitive patterns (2x) + relevant workflows
+      - "I'm stuck on X" → problem-solving agents + debugging patterns
+      
+    context_awareness:
+      - recent_conversation: "Consider what user was just working on"
+      - project_context: "Factor in current project type"
+      - user_preferences: "Learn from past selections"
+      
+    proactive_suggestions:
+      - cross_pollination: "Suggest unexpected but valuable combinations"
+      - skill_building: "Recommend learning progressions"
+      - efficiency_tips: "Faster ways to achieve goals"
+      
+  error_handling:
+    no_matches: "Suggest creating new synth or workflow"
+    ambiguous_request: "Ask clarifying questions with examples"
+    too_many_matches: "Group by category and ask for preference"
+    
+  reporting:
+    success_format: |
+      🎯 **Best Match**: {resource_name} ({quick_code}) - {confidence}%
+      💡 **Why**: {explanation}
+      🚀 **Use**: `$agent {quick_code}` or `$agent {resource_name}`
+      
+      🔄 **Alternatives**:
+      • {alt1} ({code1}) - {reason1}
+      • {alt2} ({code2}) - {reason2}
+      
+      🧠 **Pro Tip**: {combination_suggestion}

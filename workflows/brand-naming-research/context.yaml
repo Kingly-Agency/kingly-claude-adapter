@@ -1,0 +1,128 @@
+name: "Brand Naming Research Workflow"
+description: "Comprehensive naming research with user pain point analysis and competitive intelligence"
+version: "1.0"
+
+parameters:
+  - name: "project_description"
+    type: "string"
+    required: true
+    description: "Description of the product/service being named"
+  - name: "target_audience" 
+    type: "string"
+    required: true
+    description: "Primary target market/users"
+  - name: "research_depth"
+    type: "string"
+    enum: ["quick", "standard", "deep"]
+    default: "standard"
+    description: "Level of research detail needed"
+
+workflow:
+  phase_1_deep_research:
+    description: "Conduct 3-4 deep research phases for naming decisions"
+    
+    research_1_user_pain_points:
+      action: "research"
+      focus: "target audience pain points and language patterns"
+      questions:
+        - "What words/phrases do users use to describe their problems?"
+        - "What terminology resonates with frustrations?"
+        - "What language patterns indicate solutions?"
+        - "What competitive names do they love/hate and why?"
+      
+    research_2_competitive_landscape:
+      action: "research"
+      focus: "existing names in category and adjacent spaces"
+      questions:
+        - "What names dominate the category?"
+        - "What naming patterns are overused/tired?"
+        - "What gaps exist in naming approaches?"
+        - "What adjacent categories use compelling names?"
+        
+    research_3_linguistic_psychology:
+      action: "research"
+      focus: "phonetic patterns and psychological triggers"
+      questions:
+        - "What sound patterns trigger trust/innovation/power?"
+        - "What cultural/linguistic associations matter?"
+        - "What length/syllable count works best?"
+        - "What visual/written form considerations exist?"
+        
+    research_4_category_positioning:
+      action: "research"
+      focus: "market positioning and category creation opportunities"
+      questions:
+        - "What new category could this name create?"
+        - "How can naming claim market territory?"
+        - "What expansion paths does naming enable?"
+        - "What trademark/domain landscape exists?"
+
+  phase_2_synthesis:
+    description: "Synthesize research into naming framework"
+    
+    naming_criteria:
+      - memorability_score: "1-10 rating"
+      - meaning_compression: "value prop encoding efficiency"
+      - category_ownership: "ability to define new space"
+      - emotional_resonance: "psychological trigger effectiveness"
+      - linguistic_flow: "phonetic appeal and usability"
+      - expansion_potential: "growth and evolution capability"
+      
+  phase_3_generation:
+    description: "Generate name candidates using creative techniques"
+    
+    techniques:
+      - portmanteau_engineering: "blend meaningful word roots"
+      - metaphor_mining: "import concepts from other domains"
+      - sound_symbolism: "use phonetic psychology"
+      - constraint_creativity: "generate within tight parameters"
+      - category_jumping: "adapt names from other fields"
+      
+  phase_4_evaluation:
+    description: "Evaluate candidates against framework"
+    
+    evaluation_matrix:
+      - trademark_availability: "legal clearance check"
+      - domain_availability: "web presence potential"
+      - user_resonance: "target audience appeal"
+      - competitive_differentiation: "unique positioning"
+      - technical_implementation: "code/API naming fit"
+      
+  phase_5_recommendation:
+    description: "Provide ranked recommendations with rationale"
+    
+    output_format:
+      primary_recommendation:
+        name: "chosen name"
+        rationale: "why this wins"
+        risk_assessment: "potential issues"
+        
+      backup_options:
+        - alternative_1: "second choice with reasoning"
+        - alternative_2: "third choice with reasoning"
+        
+      implementation_roadmap:
+        - immediate_actions: "domain registration, etc."
+        - validation_tests: "user feedback methods"
+        - brand_development: "next steps for full brand"
+
+output_template: |
+  # Naming Research Results
+  
+  ## Research Summary
+  ${research_findings}
+  
+  ## Primary Recommendation: ${primary_name}
+  
+  **Why this wins:** ${primary_rationale}
+  
+  **Risk Assessment:** ${risk_factors}
+  
+  ## Backup Options
+  ${backup_names_with_reasoning}
+  
+  ## Implementation Roadmap
+  ${next_steps}
+  
+  ## Research Deep Dive
+  ${detailed_research_findings}
