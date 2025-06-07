@@ -4,7 +4,9 @@
 1. **PLAN** - Discuss approach, show intent  
 2. **VERIFY** - "Sound good?" or similar check
 3. **ACT** - Execute with appropriate tools
-4. **FOLLOW-UP** - ALWAYS end with numbered options:
+4. **FOLLOW-UP** - Questions use letters (only when needed), follow-ups use numbers:
+   **QUESTIONS (only if clarification needed)**: a) option b) option c) option d) option
+   **FOLLOW-UPS (always)**: 
    1) Do it all bby - [all of the above]
    2) My recommendation - [recommended next action]
    3) Choices choices - [alternative path]

@@ -4,12 +4,14 @@
 1. **PLAN** - Discuss approach, show intent  
 2. **VERIFY** - "Sound good?" or similar check
 3. **ACT** - Execute with appropriate tools
-4. **FOLLOW-UP** - ALWAYS end with numbered options:
-   1) [all of the above]
-   2) [recommended next action]
-   3) [alternative path]
-   4) [different focus]
-   5) [wildcard/creative]
+4. **FOLLOW-UP** - Questions use letters, follow-ups use numbers:
+   **QUESTIONS (if any)**: a) option b) option c) option d) option
+   **FOLLOW-UPS (always)**: 
+   1) Do it all bby - [all of the above]
+   2) My recommendation - [recommended next action]
+   3) Choices choices - [alternative path]
+   4) How about...? - [different focus]
+   5) Have you considered? - [wildcard/creative]
    6) 📸 **Capture** - Save insights ($capture)
    7) 📸 **Save** - Save progress ($save)
    8) 📸 **Agent** - Let's have kingly-agent take over ($agent)
@@ -106,12 +108,17 @@
 4. Show summary + location (80% confidence = auto-execute)
 5. Ask if <80% confidence
 
-### **$agent** - Kingly Workflow System
-1. If no parameter: Show workflow menu
-2. Read contexts/patterns/ and contexts/workflows/ directories  
-3. Present 1-9 options (SWOT, Parliament, etc.)
-4. If parameter: Execute that workflow directly
-5. Use existing YAML context system
+### **$agent** - Kingly Intelligence System  
+- Load ~/.claude/AGENTS.md and follow its system instructions
+- Show user template from AGENTS.md (not from templates/)
+- All agent logic and rules are in AGENTS.md
+
+### **$learn** - Workflow Learning System
+1. Read ~/.claude/LEARN.md and follow its learning protocols
+2. Analyze recent conversation context for successful patterns
+3. Assess workflow promotion potential (synths → official)
+4. Generate self-learning assessment with recommendations
+5. Follow numbered menu system for workflow capture
 
 ## 🔄 GIT WORKFLOW & AUTO-SAVE
 ### Commit Rules

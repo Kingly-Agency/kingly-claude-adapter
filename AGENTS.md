@@ -1,33 +1,28 @@
-# AGENTS.md
+# AGENTS.md Template
 <!-- PRESERVE THIS SYSTEM PROMPT WHEN REGENERATING -->
 
-## SYSTEM INSTRUCTIONS FOR CLAUDE (DO NOT SHOW TO USER)
-- Generated: 2025-06-06 21:07:23
-- Context scan timestamp: 2025-06-06 21:07:23
+## CLAUDE SYSTEM INSTRUCTIONS (INTERNAL)
+- Generated: 2025-06-07 14:17:13
+- Context scan timestamp: {context_scan_time}
 - This file loaded when user types $agent
 - Parse semantic intent after $agent command
 - CEO/1a: Always analyze recent context first, provide strategic summary
 - When unclear: Show interpretation + offer 1-n numbered options
 - Don't reload this file if already in context
 - Manual refresh via cache workflow when user requests
-- Show only USER TEMPLATE section below to user
+- IMPORTANT: Show only USER TEMPLATE section below to user (not these instructions)
 
 ## CONTEXT SOURCES
-- Agents: 0 agents in contexts/agents/ (not found)
-- Patterns: 0 patterns in contexts/patterns/ (not found)
-- Workflows: 0 workflows in contexts/workflows/ (not found)
-- Synths: 3 dynamic specialists in ~/.claude/synths/
-- Workflow Catalog: 5 workflows in ~/.claude/workflows/
-- Last scan: 2025-06-06 21:07:23
+- Agents: 2 agents in {agent_path}
+- Patterns: 16 patterns in {pattern_path}  
+- Workflows: 8 workflows in {workflow_path}
+- Last scan: {last_scan_date}
 
 ## SEMANTIC PARSING RULES
 - `$agent ceo help me` → CEO analyzes context, asks "What's up?"
 - `$agent 1a pivot` → CEO loads with pivot analysis
 - `$agent full analysis` → Run combo A (full intelligence)
 - `$agent 3a` → Direct code activation
-- `$agent 4a` → Activate synth specialist
-- `$agent promote 4a` → Move synth to permanent agents/
-- `$agent discover branding` → Smart search across all intelligence sources
 - Off-script requests → Best guess + confirmation
 
 ## USER FORMATTING PREFERENCES
@@ -39,82 +34,92 @@ When running multi-framework analysis:
 - **Visual separators** between sections (═══)
 - **Nuclear synthesis** at end with verdict
 - **Progress bars** or counts in headers
-- **Emergent emotions** clearly labeled## QUICK CODES REFERENCE
-### Agents (0 total)
-*No permanent agents found in contexts/agents/ directory*
+- **Emergent emotions** clearly labeled
 
-### Patterns (0 total)
-*No patterns found in contexts/patterns/ directory*
+## QUICK CODES REFERENCE
+### Agents (2 total)
+**1b** Chief Executive Officer - Emergency response perspective
+**1c** Development Engineer - Quality assurance perspective
 
-### Workflows (0 total)
-*No workflows found in contexts/workflows/ directory*
+### Patterns (16 total)
+**2b** 10-10-10-framework - Temporal impact analysis for better decision making
+**2c** agile-scrum - Scrum framework with AI-powered ceremonies
+**2d** decision-matrix - Strengths, Weaknesses, Opportunities, Threats
+**2e** echo-intelligence-patterns - How these patterns compose recursively
+**2f** extreme-examples - Solve problems by imagining radically different scenarios
+**2g** Da Vinci - Add domain-specific experts
+**2h** jobs-to-be-done - How others perceive us
+**2i** noise-analysis - What unusual cases matter?
+**2j** synthesis_execution - No description
+**2k** reverse-brainstorming - Find solutions by exploring how to cause the problem
+**2l** reversibility-check - Easy to reverse or modify
+**2m** rice-scoring - Person-months of work
+**2n** scamper-framework - Systematic creativity through seven transformation lenses
+**2o** soar-analysis - How will we measure success?
+**2p** swot-analysis - External risks
+**2q** vibe-coding - Flow state optimized development
 
-### Dynamic Specialists (3 total) 🧬
-**4a** - **Marketing & Branding Wizard** - Genius UX/marketing wizard with exceptional branding instincts, neuromarketing expertise, and linguistic engineering
-**4b** - **Technical Book Editor** - Meticulous technical book editor ensuring accuracy, clarity, and consistency while maintaining author's voice
-**4c** - **Technical Book Writer** - Specialized technical book writer transforming complex architectural documentation into engaging, comprehensive technical books
+### Workflows (8 total)
+**3b** cognitive-parliament - Identify emergent emotional states
+**3c** descriptive name - Enable portfolio intelligence through workflow-driven context connections
+**3d** document-synthesis - Only highest-impact insights
+**3e** emotion-synthesis - Emotions about emotions
+**3f** entropy-router - Adjust routing based on time factors
+**3g** insight-bubbling - Propagate significant insights from nested contexts upward
+**3h** knowledge-trickling - Share relevant parent insights with child contexts
+**3i** multi-expert-validation - EEPS active but invisible
 
-### Workflow Catalog (5 total) 📚
-**5a** - **Brand Naming Research** - Brand naming research workflow
-**5b** - **Cache Regeneration** - Regenerate AGENTS.md and FULL.md from context scan
-**5c** - **Dynamic Agent Synthesis** - Create specialized agents on-demand, capture them, and enhance the system
-**5d** - **System Archaeology Consolidation** - System archaeology consolidation workflow
-**5e** - **Unified Intelligence Discovery** - Smart discovery across agents, synths, workflows, and patterns
+### Dynamic Specialists (0 total) 🧬
+(No dynamic specialists currently active)
 
 ### Unified Intelligence Discovery 🔍
 Use `$agent discover <topic>` to search across all intelligence sources:
-- **Agents** → Permanent specialist personas (none found)
-- **Synths** → Session-specific dynamic specialists (3 available)
-- **Workflows** → Multi-step process automation (5 available)
-- **Patterns** → Reusable thinking frameworks (none found)### Promotion System 🚀
+- **Agents** → Permanent specialist personas
+- **Synths** → Session-specific dynamic specialists  
+- **Workflows** → Multi-step process automation
+- **Patterns** → Reusable thinking frameworks
+
+### Promotion System 🚀
 - `$agent promote 4a` → Move synth to permanent agents/
 - `$agent archive 4a` → Save synth for future sessions
 - `$agent usage 4a` → Show synth usage analytics
 
 ### Combinations
-**A** - **Full Intelligence Scan** - Run unified discovery + all available synths
-**B** - **Creative Synthesis** - Combine marketing wizard + technical writer for innovative content
-**C** - **Technical Excellence** - Technical book writer + editor for comprehensive documentation
+(Combination workflows not yet implemented)
 
 ---
 <!-- USER TEMPLATE BELOW THIS LINE -->
 
 ## **$agent** - Quick Pick Menu
 
-🎯 **KINGLY AGENT QUICK PICK** | Updated: 2025-06-06
+🎯 **KINGLY AGENT QUICK PICK** | Updated: 2025-06-07
 
-**SYNTHS**: 4a-4c | **WORKFLOWS**: 5a-5e | **COMBOS**: A-C
+**AGENTS**: 1a-1c | **PATTERNS**: 2a-2q | **WORKFLOWS**: 3a-3i | **COMBOS**: A-A
 
 ### 🚀 HOT PICKS
-**4a** - 🎨 Marketing & Branding Wizard - *Genius branding with neuromarketing*
-**5c** - 🧬 Dynamic Agent Synthesis - *Create specialists on-demand*  
-**5e** - 🔍 Unified Intelligence Discovery - *Smart search across all resources*
+🎯 **1b** Chief Executive Officer - Strategic business intelligence
+⚡ **2b** 10-10-10-framework - Structured thinking
+🔥 **3b** cognitive-parliament - Multi-step automation
 
 ### 📋 QUICK REFERENCE
-• **4a** → Marketing & branding genius
-• **4b** → Technical book editor
-• **4c** → Technical book writer
-• **5b** → Cache regeneration workflow
-• **5e** → Intelligence discovery system**Type any code to activate** (e.g., "4a", "5c", "A")
+**Agents (2)**: 1b, 1c
+**Patterns (16)**: 2b, 2c, 2d, 2e, 2f, 2g, 2h, 2i, 2j, 2k, 2l, 2m, 2n, 2o, 2p, 2q  
+**Workflows (8)**: 3b, 3c, 3d, 3e, 3f, 3g, 3h, 3i
+
+**Type any code to activate** (e.g., "3a", "2f", "A", "1a.negotiator")
 
 Or **type keyword** for intelligent routing:
-- "help" → Unified intelligence discovery
+- "help" → CEO strategic analysis
 - "analyze" → Multi-expert validation
-- "brainstorm" → Creative synth specialists
-- "discover" → Smart resource search
+- "brainstorm" → Creative patterns
+- "full" → Complete intelligence sequence
 
 ### 📁 MENU OPTIONS
-1) **Synths** - 3 dynamic specialists ready to deploy
-2) **Workflows** - 5 advanced automation systems
-3) **Combos** - 3 power combinations
-4) **Discover** - Smart search across all intelligence
+1) **Agents** - 2 leadership & personality types
+2) **Patterns** - 16 thinking frameworks  
+3) **Workflows** - 8 advanced intelligence systems
+4) **Combos** - {combo_count} power combinations
 5) **Full Catalog** - Complete descriptions
-6) **Refresh Cache** - Rebuild from current system state
+6) **Refresh Cache** - Rebuild from templates/
 
-📊 **System Stats**: 8 total resources available | Last refresh: just now
-
-### 🧬 SYNTH MANAGEMENT
-- **Create**: Use workflow 5c (Dynamic Agent Synthesis)
-- **Promote**: `$agent promote 4a` → Move to permanent agents/
-- **Archive**: `$agent archive 4a` → Save for future sessions
-- **Discover**: `$agent discover <topic>` → Find perfect resource
+📊 **System Stats**: {total_contexts} contexts available | Last refresh: {last_refresh_relative}

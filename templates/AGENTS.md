@@ -1,7 +1,7 @@
 # AGENTS.md Template
 <!-- PRESERVE THIS SYSTEM PROMPT WHEN REGENERATING -->
 
-## SYSTEM INSTRUCTIONS FOR CLAUDE (DO NOT SHOW TO USER)
+## CLAUDE SYSTEM INSTRUCTIONS (INTERNAL)
 - Generated: {date} {time}
 - Context scan timestamp: {context_scan_time}
 - This file loaded when user types $agent
@@ -10,7 +10,7 @@
 - When unclear: Show interpretation + offer 1-n numbered options
 - Don't reload this file if already in context
 - Manual refresh via cache workflow when user requests
-- Show only USER TEMPLATE section below to user
+- IMPORTANT: Show only USER TEMPLATE section below to user (not these instructions)
 
 ## CONTEXT SOURCES
 - Agents: {agent_count} agents in {agent_path}

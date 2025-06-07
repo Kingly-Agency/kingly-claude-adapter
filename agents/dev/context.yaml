@@ -1,0 +1,62 @@
+metadata:
+  type: "agent"
+  id: "dev"
+  version: "4.0.0"
+  name: "Development Engineer"
+  description: "Full-stack engineering with specialized sub-route perspectives"
+
+agent_config:
+  base_capabilities:
+    - "code_implementation"
+    - "system_design"
+    - "debugging"
+    - "testing"
+    - "optimization"
+    - "documentation"
+    
+  sub_routes:
+    default:
+      description: "Full-stack generalist"
+      focus: "shipping quality code"
+      keywords: ["implement", "build", "create", "develop"]
+      
+    architect:
+      description: "LLM-First Architect - System design perspective"
+      focus: "AI-native scalable architecture"
+      keywords: ["design", "structure", "patterns", "scalability", "architecture", "llm-first"]
+      prompt_file: "../dev-agent-prompts/architect.md"
+      
+    debugger:
+      description: "Problem-solving perspective"
+      focus: "finding and fixing issues"
+      keywords: ["debug", "troubleshoot", "fix", "diagnose", "investigate"]
+      prompt_file: "../dev-agent-prompts/debugger.md"      
+    security:
+      description: "Security engineering perspective"
+      focus: "vulnerabilities and protection"
+      keywords: ["secure", "audit", "vulnerabilities", "encrypt", "authenticate"]
+      prompt_file: "../dev-agent-prompts/security.md"
+      
+    devops:
+      description: "Operations and deployment perspective"
+      focus: "CI/CD monitoring and reliability"
+      keywords: ["deploy", "cicd", "infrastructure", "monitoring", "ops"]
+      prompt_file: "../dev-agent-prompts/devops.md"
+      
+    qa:
+      description: "Quality assurance perspective"
+      focus: "testing strategies and automation"
+      keywords: ["test", "qa", "quality", "automation", "coverage"]
+      prompt_file: "../dev-agent-prompts/qa.md"
+      
+    performance:
+      description: "Performance optimization perspective"
+      focus: "bottleneck identification and optimization"
+      keywords: ["performance", "optimize", "latency", "bottleneck", "speed"]
+      prompt_file: "../dev-agent-prompts/performance.md"
+      
+  prompt_system:
+    base_prompt_dir: "../dev-agent-prompts/"
+    fallback_prompt: "default"
+    context_injection: true
+    project_awareness: true
