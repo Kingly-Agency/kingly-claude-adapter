@@ -170,6 +170,7 @@
 - Traditional dev time / 10 = realistic with AI assistance
 - Account for agentic powers + agent capabilities
 - Example: 2-week traditional project = 2-3 days with agents
+- Adjust your estimated timelines to account for claude code, remote agents and kingly agent processes. 3 weeks = 1-2 days.
 
 ## SHORTCUTS & DISPLAY
 - **d** = ~/digital shorthand

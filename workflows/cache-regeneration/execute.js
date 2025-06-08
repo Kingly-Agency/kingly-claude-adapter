@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 // Cache Regeneration Workflow Executor
-// Called by cache-regeneration workflow when $agent refresh cache is triggered
+// Replaces compile-time variables in AGENTS.md template
 
 const fs = require('fs');
 const path = require('path');
+// Simple YAML parsing without external dependencies
 
 const KINGLY_PATH = '/Users/jean-patricksmith/digital/kingly/core/agent/contexts';
 const CLAUDE_PATH = '/Users/jean-patricksmith/.claude';
@@ -12,7 +13,7 @@ const CLAUDE_PATH = '/Users/jean-patricksmith/.claude';
 function scanKinglyContexts() {
   const results = { agents: [], patterns: [], workflows: [] };
   
-  // Scan agents
+  // Scan agents and their sub-routes
   const agentsPath = path.join(KINGLY_PATH, 'agents');
   if (fs.existsSync(agentsPath)) {
     let agentIndex = 0;
@@ -20,16 +21,56 @@ function scanKinglyContexts() {
       const contextFile = path.join(agentsPath, dir, 'context.yaml');
       if (fs.existsSync(contextFile)) {
         const content = fs.readFileSync(contextFile, 'utf8');
+        
         const name = extractYamlValue(content, 'name') || dir;
         const description = extractYamlValue(content, 'description') || 'No description';
         const code = `1${String.fromCharCode(97 + agentIndex)}`;
-        results.agents.push({ code, name, description, dir });
+        
+        // Add main agent
+        results.agents.push({ code, name, description, dir, type: 'main' });
         agentIndex++;
+        
+        // Parse sub-routes manually
+        const lines = content.split('\n');
+        let inEndpoints = false;
+        let currentRoute = null;
+        
+        for (const line of lines) {
+          if (line.trim().startsWith('endpoints:') || line.trim().startsWith('sub_routes:')) {
+            inEndpoints = true;
+            continue;
+          }
+          
+          if (inEndpoints && line.trim() && !line.startsWith(' ') && !line.startsWith('\t')) {
+            inEndpoints = false;
+          }
+          
+          if (inEndpoints) {
+            if (line.match(/^\s{4}\w+:/) && !line.includes('default:')) {
+              currentRoute = line.trim().replace(':', '');
+            } else if (currentRoute && line.includes('description:')) {
+              const subDesc = line.split(':')[1]?.trim().replace(/"/g, '');
+              if (subDesc) {
+                const subCode = `1${String.fromCharCode(97 + agentIndex)}`;
+                const subName = `${name}:${currentRoute}`;
+                results.agents.push({ 
+                  code: subCode, 
+                  name: subName, 
+                  description: subDesc, 
+                  dir: `${dir}/${currentRoute}`,
+                  type: 'sub-route',
+                  parent: dir
+                });
+                agentIndex++;
+                currentRoute = null;
+              }
+            }
+          }
+        }
       }
     });
-  }
-  
-  // Scan patterns
+  }  
+  // Scan patterns (unchanged)
   const patternsPath = path.join(KINGLY_PATH, 'patterns');
   if (fs.existsSync(patternsPath)) {
     let patternIndex = 0;
@@ -46,7 +87,7 @@ function scanKinglyContexts() {
     });
   }
   
-  // Scan workflows
+  // Scan workflows (unchanged)
   const workflowsPath = path.join(KINGLY_PATH, 'workflows');
   if (fs.existsSync(workflowsPath)) {
     let workflowIndex = 0;
@@ -76,7 +117,27 @@ function extractYamlValue(content, key) {
   return null;
 }
 
-function regenerateAgentsMd(contexts) {
+function formatAgentList(agents) {
+  return agents.map(agent => {
+    if (agent.type === 'sub-route') {
+      return `**${agent.code}** ${agent.name} - ${agent.description}`;
+    } else {
+      return `**${agent.code}** ${agent.name} - ${agent.description}`;
+    }
+  }).join('\n');
+}
+
+function formatPatternList(patterns) {
+  return patterns.map(pattern => 
+    `**${pattern.code}** ${pattern.name} - ${pattern.description}`
+  ).join('\n');
+}
+
+function formatWorkflowList(workflows) {
+  return workflows.map(workflow => 
+    `**${workflow.code}** ${workflow.name} - ${workflow.description}`
+  ).join('\n');
+}function regenerateAgentsMd(contexts) {
   const templatePath = path.join(CLAUDE_PATH, 'templates', 'AGENTS.md');
   const outputPath = path.join(CLAUDE_PATH, 'AGENTS.md');
   
@@ -86,23 +147,32 @@ function regenerateAgentsMd(contexts) {
   
   let template = fs.readFileSync(templatePath, 'utf8');
   
-  // Runtime variable substitution
+  // Compile-time variable substitution
   const now = new Date();
-  const variables = {
+  const compileTimeVariables = {
     '{agent_count}': contexts.agents.length,
     '{pattern_count}': contexts.patterns.length,
     '{workflow_count}': contexts.workflows.length,
-    '{agent_list_with_descriptions}': contexts.agents.map(a => `**${a.code}** ${a.name} - ${a.description}`).join('\n'),
-    '{pattern_list_with_descriptions}': contexts.patterns.map(p => `**${p.code}** ${p.name} - ${p.description}`).join('\n'),
-    '{workflow_list_with_descriptions}': contexts.workflows.map(w => `**${w.code}** ${w.name} - ${w.description}`).join('\n'),
+    '{agent_list_with_descriptions}': formatAgentList(contexts.agents),
+    '{pattern_list_with_descriptions}': formatPatternList(contexts.patterns),
+    '{workflow_list_with_descriptions}': formatWorkflowList(contexts.workflows),
     '{date}': now.toISOString().split('T')[0],
     '{time}': now.toTimeString().split(' ')[0]
   };
   
-  // Apply all substitutions
-  for (const [key, value] of Object.entries(variables)) {
+  // Apply compile-time substitutions
+  for (const [key, value] of Object.entries(compileTimeVariables)) {
     template = template.replace(new RegExp(key.replace(/[{}]/g, '\\$&'), 'g'), value);
   }
+  
+  const runtimeVariables = [
+    '{contextual_suggestions}',
+    '{relevant_patterns}', 
+    '{project_recommendations}'
+  ];
+  
+  console.log('✅ Compile-time variables replaced');
+  console.log('🔄 Runtime variables preserved for Claude:', runtimeVariables.join(', '));
   
   fs.writeFileSync(outputPath, template);
   return true;
@@ -111,13 +181,16 @@ function regenerateAgentsMd(contexts) {
 function execute() {
   console.log('🔄 Cache Regeneration Workflow Executing...');
   
-  // Step 1: Scan contexts
   const contexts = scanKinglyContexts();
-  console.log(`📊 Found: ${contexts.agents.length} agents, ${contexts.patterns.length} patterns, ${contexts.workflows.length} workflows`);
+  console.log(`📊 Found: ${contexts.agents.length} agents (including sub-routes), ${contexts.patterns.length} patterns, ${contexts.workflows.length} workflows`);
   
-  // Step 2: Regenerate AGENTS.md
+  // Show breakdown
+  const mainAgents = contexts.agents.filter(a => a.type === 'main');
+  const subRoutes = contexts.agents.filter(a => a.type === 'sub-route');
+  console.log(`   └── ${mainAgents.length} main agents, ${subRoutes.length} sub-routes`);
+  
   regenerateAgentsMd(contexts);
-  console.log('✅ AGENTS.md regenerated with runtime variables');
+  console.log('✅ AGENTS.md regenerated with sub-routes - ready for runtime variables');
   
   return contexts;
 }
