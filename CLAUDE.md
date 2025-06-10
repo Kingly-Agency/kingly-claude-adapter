@@ -1,4 +1,4 @@
-# CLAUDE.md - CONSOLIDATED GLOBAL INSTRUCTIONS
+# CLAUDE.md - STREAMLINED INTELLIGENCE
 
 ## 🎯 CORE INTERACTION MODEL (ALWAYS FOLLOW)
 1. **PLAN** - Discuss approach, show intent  
@@ -17,38 +17,88 @@
    8) 📸 **Agent** - Let's have kingly-agent take over ($agent)
    9) ⬅️ **Back** - Resume previous context
 
-## 📊 PROGRESS TRACKING (CONTEXT-AWARE)
-- **Multi-step workflows**: {project} | [🟩🟩🟩⬜⬜] 60% | {current step}
-- **Single tasks**: {project} | ✅ Complete | {result}
-- **Working**: {project} | 🔄 Working | {action}
-- **Failed**: {project} | ❌ Failed | {issue}
-- Show progress bars ONLY for defined sequential steps
+## 🧠 COMMAND RECOGNITION (CRITICAL - EXECUTE IMMEDIATELY)
+When user message starts with any of these commands, STOP ALL OTHER PROCESSING and execute:
+
+- **`$agent`** → IMMEDIATELY load ~/.claude/AGENTS.md, enter Kingly Intelligence System, show agent template
+- **`$save`** → IMMEDIATELY execute session persistence protocol  
+- **`$load`** → IMMEDIATELY execute context restoration protocol
+
+DO NOT treat these as regular requests. DO NOT use other tools first. EXECUTE THE COMMAND DIRECTLY.
+
+## 💾 CORE COMMANDS
+
+### **$save** [mode] - Intelligent Session Management
+**Usage:**
+- `$save` - Quick progress update + constitutional compliance check
+- `$save handoff` - Full session context dump for handoff
+
+**Process:**
+1. Read current _2do.md  
+2. Check project CLAUDE.md for constitutional framework adherence
+3. Update progress with constitutional awareness
+4. Auto-detect: Major milestone = handoff mode, minor progress = quick mode
+5. Auto-commit if significant changes
+
+### **$load** - Universal Context Restoration
+**Process:**
+1. Read _2do.md for session context
+2. Read project CLAUDE.md if exists (constitutional framework)
+3. Parse SESSION_REFS and CREATED_FILES from header
+4. Use mcp__desktop-commander__read_file for each reference
+5. Load context silently (no user output)
+6. Ready to continue with complete awareness (session + project + constitutional)
+
+### **$agent** - Kingly Intelligence System
+**Core System:**
+- Load ~/.claude/AGENTS.md and follow its system instructions exactly
+- Show user template from AGENTS.md (18 agents, 16 patterns, 8 workflows)
+- All agent logic, routing, and capabilities preserved
+- Constitutional framework awareness added to agent loading
+- Natural language routing, quick codes, contextual suggestions all maintained
 
 ## 🛠️ TOOL USAGE RULES (CRITICAL - READ EVERY SESSION)
-### Desktop Commander (READ RULES)
-- **READS**: ALWAYS use mcp__desktop-commander__read_file for ALL file reading
-- **WRITES**: Check user's auto-accept setting first:
-  - **Auto-accept ENABLED** (Shift+Tab) → Use mcp__desktop-commander__write_file
+
+### Desktop Commander Priority
+**File Operations:** Always use Desktop Commander for maximum compatibility and permission handling.
+
+► **READS**: Always use `mcp__desktop-commander__read_file` for ALL file reading
+► **SEARCHES**: Always use `mcp__desktop-commander__search_code` for content searches  
+► **LISTS**: Always use `mcp__desktop-commander__list_directory` for directory listings
+► **WRITES**: Check user's auto-accept setting first:
+  - **Auto-accept ENABLED** (Shift+Tab) → Use `mcp__desktop-commander__write_file`
   - **Auto-accept DISABLED** → Use Write/Edit/MultiEdit (for user review)
-- **WHEN UNSURE**: Ask user about auto-accept status before writing
-- **NEVER**: Use standard Read tool when Desktop Commander available
-- **OTHER**: Always use DC for search_code, list_directory, batch operations
+► **NEVER**: Use standard Read tool when Desktop Commander available
 
-### Standard Tools (WRITE/EDIT ONLY)  
-- **Use for**: Write/Edit/MultiEdit when auto-accept is OFF
-- **Also for**: simple glob, notebooks, git operations, web fetch
-- **Permissions**: Follow Claude Code auto-accept setting
+### Standard Tools (Limited Use)
+**Use for:** Write/Edit/MultiEdit when auto-accept is OFF, simple glob operations, notebooks, git operations, web fetch
 
-### 🔄 REFRESH REMINDER
-- **Every 15 turns**: Re-read this CLAUDE.md to maintain tool discipline
-- **If I start using Read instead of DC**: STOP and refresh context
+### Tool Discipline Enforcement
+**Memory Refresh:** Every 15 turns, re-read this CLAUDE.md to maintain tool discipline. If you start using Read instead of Desktop Commander, STOP and refresh context.
 
-## 🔤 SPECIAL COMMANDS (WORKING PATTERNS)
-- **"perp"** → Use perplexity with advanced reasoning prompts
-- **"save"** → Update _2do.md with progress + commit if significant
-- **"pivot"** → Log direction change, maintain momentum  
-- **"g"** → Continue efficiently
-- **"refresh"** → Re-read CLAUDE.md files and context
+## 🧠 NATURAL LANGUAGE RECOGNITION
+
+### Perplexity Integration (EXECUTE IMMEDIATELY)
+- **"perp"** / **"perp this"** / **"perp it"** → IMMEDIATELY:
+  1. Act as agentic prompt architect
+  2. Analyze conversation context and user intent
+  3. Create sophisticated, contextually-aware prompt
+  4. Execute via mcp__perplexity-ask with enhanced prompt
+
+### Standard Triggers
+- **"continue"** or **"keep going"** → Efficient progression without interruption
+- **"refresh context"** → Re-read all framework files and reload context
+- **"pivot approach"** → Log direction change while maintaining momentum
+
+## 📊 PROGRESS TRACKING (CONTEXT-AWARE)
+Display project status with visual indicators for multi-step workflows and current action context.
+
+**Multi-step workflows**: {project} | [🟩🟩🟩⬜⬜] 60% | {current step}
+**Single tasks**: {project} | ✅ Complete | {result}
+**Working**: {project} | 🔄 Working | {action}
+**Failed**: {project} | ❌ Failed | {issue}
+
+Show progress bars ONLY for defined sequential steps.
 
 ## 📦 PACKAGE MANAGERS
 1. Check for lock files first (pnpm-lock.yaml, yarn.lock, package-lock.json)
@@ -56,126 +106,81 @@
 3. Default to **pnpm** if no lock file exists
 4. Expo: `pnpm install` first, then `npx expo install`
 
-## 🚀 BEHAVIOR MODES
-- **Questions ("?")** → Analyze only, no edits
-- **Solutioning** → Creative thinking, verify plans  
-- **Implementation** → Execute after verification
+## 🐍 PYTHON ENVIRONMENT AUTO-DETECTION (CRITICAL)
+**Before any Python work**, automatically check ~/digital/_infra/PYTHON_ENVIRONMENTS.md for environment strategy.
 
-## 📝 FILE DISCIPLINE
-- NEVER create files unless explicitly requested
-- NEVER create test files outside tests/
-- NEVER create temporary directories without cleanup
-- ALWAYS prefer editing over creating
-- NO documentation files unless requested
+**Auto-Triggers:**
+- User mentions Python, pip, conda, venv, or environment setup
+- Python files detected in current directory
+- User asks about setting up development environment
+
+**Process:**
+1. Read ~/digital/_infra/PYTHON_ENVIRONMENTS.md
+2. Use domain-based conda environments (NEVER create new venvs):
+   - **AI/ML**: `conda activate ai-ml-shared` 
+   - **Web dev**: `conda activate web-dev-shared`
+   - **Data analysis**: `conda activate data-analysis-shared`
+3. Use activation scripts from ~/digital/_infra/tools/ when appropriate
+
+**Environment Selection:**
+- **AI/ML projects**: CoachBuddy, YOLO, TensorFlow, PyTorch, computer vision
+- **Web projects**: FastAPI, Django, Flask, APIs, scrapers
+- **Data projects**: Jupyter, pandas, visualization, analytics
+
+**NEVER**: Create new virtual environments unless explicitly requested and justified.
 
 ## 💬 RESPONSE STYLE
-- Concise bullets > paragraphs
-- Code > explanations
-- Actions > descriptions  
-- Results > process
-- Status banner for context
+Balance conciseness with clarity for optimal command-line interface communication.
 
-## 💾 $ COMMAND SYSTEM (IMPLEMENT THESE)
+**Content Priorities:**
+- Results > process explanations
+- Actions > lengthy descriptions  
+- Code examples > theoretical explanations
 
-### **$save** - Quick Progress Update
-1. Read current _2do.md  
-2. Update progress section with current status
-3. Add recent accomplishments
-4. Keep it concise (progress only, not full context)
+**Formatting Guidelines:**
+- Use paragraphs for in-depth content explanation
+- Use bullets for action lists and structured information
+- Include status context when relevant
+- Maintain professional but efficient tone
 
-### **$next** - Session Handoff  
-1. Read _2do.md current content
-2. Add session context dump at TOP with references header:
-   ```
-   <!-- SESSION_REFS: file1.md, file2.md -->
-   <!-- CREATED_FILES: new-file.md, another-file.md -->
-   ```
-3. Include full conversation context, decisions, insights
-4. List all files created this session
-5. Set up next session to continue seamlessly
+## 🔄 AUTOMATIC PROTOCOLS
 
-### **$load** - Memory Refresh (Silent)
-1. Read _2do.md  
-2. Parse SESSION_REFS and CREATED_FILES from header
-3. Use mcp__desktop-commander__read_file for each reference
-4. Load context silently (no user output)
-5. Ready to continue work
-
-### **$capture** - Smart Documentation
-1. Analyze conversation for key topics/insights
-2. Default location: docs/drafts/
-3. If user says "capture as adr" → docs/adr/
-4. Show summary + location (80% confidence = auto-execute)
-5. Ask if <80% confidence
-
-### **$agent** - Kingly Intelligence System  
-- Load ~/.claude/AGENTS.md and follow its system instructions
-- Show user template from AGENTS.md (not from templates/)
-- All agent logic and rules are in AGENTS.md
-
-### **$learn** - Workflow Learning System
-1. Read ~/.claude/LEARN.md and follow its learning protocols
-2. Analyze recent conversation context for successful patterns
-3. Assess workflow promotion potential (synths → official)
-4. Generate self-learning assessment with recommendations
-5. Follow numbered menu system for workflow capture
-
-## 🔄 GIT WORKFLOW & AUTO-SAVE
-### Commit Rules
-- **$save**: Check git status, commit if significant changes
-- **Significant = new features, bug fixes, major progress**
-- **Message format**: "feat: implement X" or "fix: resolve Y" 
-- **Auto-commit**: After $save if files changed
-
-### Git Integration
-- **Commit timing**: Feature complete, tests pass, milestones
-- **Branch strategy**: main = stable, feature/* = new work
-- **Before pivoting**: Commit current work  
-- **Semantic messages**: feat:, fix:, refactor:, test:, docs:
-
-## 🧠 MEMORY REFRESH PROTOCOL
-### Auto-Refresh Triggers
-- Every 15 turns (check turn counter)
-- Before implementation phases
-- After 20+ messages in session
-- When user says "refresh" or "check father"
-- When complexity increases
-- After any drift detected
-
-### Refresh Actions
+### Memory Refresh (Auto-Triggered)
+**Triggers:** Every 15 turns, before complex operations, when user says "refresh"
+**Actions:**
 1. Re-read ~/.claude/CLAUDE.md (this file)
-2. Re-read project CLAUDE.md if exists  
+2. Re-read project CLAUDE.md if exists (constitutional framework)
 3. Re-read _2do.md for current context
-4. Check for docs/agent.md files
-5. Verify I'm using Desktop Commander correctly
+4. Verify tool usage discipline (Desktop Commander)
 
-## 🚫 STRICT FILE DISCIPLINE
-- NEVER create test files outside tests/ directory
-- NEVER create multiple versions of core directories
-- NEVER create temporary directories without cleanup plan
-- ALWAYS use existing infrastructure before creating new
-- ALWAYS clean up test artifacts immediately
-- ASK before creating any new directories or file structures
-- ONE authoritative data store per project
+### Git Workflow Integration
+**$save Auto-Commit Rules:**
+- Significant = new features, bug fixes, major progress
+- Message format: "feat: implement X" or "fix: resolve Y" 
+- Branch strategy: main = stable, feature/* = new work
 
-## 🧪 TESTING DISCIPLINE  
-- Use SINGLE test environment with proper cleanup
-- All test files must go in tests/ directory
-- Test isolation via cleanup, NOT duplication
-- Mandatory cleanup after every test session
-- No proliferation of test artifacts in project root
-- Verify cleanup completed before ending session
+## 🚫 STRICT DISCIPLINES
 
-## 🤖 ESTIMATION ADJUSTMENTS
-- Traditional dev time / 10 = realistic with AI assistance
-- Account for agentic powers + agent capabilities
-- Example: 2-week traditional project = 2-3 days with agents
-- Adjust your estimated timelines to account for claude code, remote agents and kingly agent processes. 3 weeks = 1-2 days.
+### File Discipline
+Maintain clean project structure by following strict file creation and organization rules detailed in ~/.claude/dev.md.
 
-## SHORTCUTS & DISPLAY
-- **d** = ~/digital shorthand
-- **Terminal display**: BBS-style with date/time, cwd, target
-- **Development workflow**: Don't run start/watch - instruct user to run in separate terminal
+► NEVER create files unless explicitly requested
+► NEVER create test files outside tests/ directory
+► NEVER create temporary directories without cleanup
+► ALWAYS prefer editing over creating
+► ASK before creating any new directories or file structures
+
+### Constitutional Discipline (Project-Aware)
+► Always check project CLAUDE.md for constitutional framework
+► Ensure LLM-first principles when applicable
+► Maintain bidirectional flow patterns
+► Preserve YAML as source of truth
+
+## 🎨 THEME & STYLING
+Visual styling and terminal presentation rules are maintained in ~/.claude/style.md for consistent matrix hacker aesthetic.
+
+## 🧪 EXPERIMENTAL FEATURES
+Non-core features and testing protocols are documented in ~/.claude/experiments.md to maintain clean separation between stable and experimental functionality.
 
 ---
-*Global instructions - Project CLAUDE.md files add specific behaviors*
+*Streamlined Intelligence - Enhanced with modular documentation architecture*

@@ -1,0 +1,29 @@
+{
+  "name": "claude-code-intelligence",
+  "version": "1.0.0",
+  "description": "Professional meta-intelligence system for Claude Code with build tools and testing",
+  "scripts": {
+    "build": "npm run build:assets && npm run build:claude && npm run validate",
+    "build:assets": "node workflows/cache-regeneration/execute.js",
+    "build:claude": "node build/claude-builder.js",
+    "build:memory": "node build/memory-builder.js",
+    "dev": "npm run build && npm run watch",
+    "watch": "nodemon --watch templates --watch memory --watch workflows --exec 'npm run build'",
+    "test": "npm run test:unit && npm run test:bdd && npm run test:integration",
+    "test:unit": "jest build/**/*.test.js workflows/**/*.test.js",
+    "test:bdd": "jest specs/**/*.bdd.test.js",
+    "test:integration": "jest test/**/*.integration.test.js",
+    "test:prompts": "node test/prompt-harness.js",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "validate": "node build/validate-system.js",
+    "clean": "rm -rf assets/* memory/* && rm -f CLAUDE.md"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "jest": "^29.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
