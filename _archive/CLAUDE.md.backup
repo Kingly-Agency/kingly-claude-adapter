@@ -1,8 +1,6 @@
 # CLAUDE.md - STREAMLINED INTELLIGENCE
-<!-- Generated from templates/CLAUDE.md - DO NOT EDIT DIRECTLY -->
 
-<!-- Included from memory/interaction-framework.md -->
-# CORE INTERACTION MODEL (ALWAYS FOLLOW)
+## 🎯 CORE INTERACTION MODEL (ALWAYS FOLLOW)
 1. **PLAN** - Discuss approach, show intent  
 2. **VERIFY** - "Sound good?" or similar check
 3. **ACT** - Execute with appropriate tools
@@ -59,6 +57,25 @@ DO NOT treat these as regular requests. DO NOT use other tools first. EXECUTE TH
 - Constitutional framework awareness added to agent loading
 - Natural language routing, quick codes, contextual suggestions all maintained
 
+## 🛠️ TOOL USAGE RULES (CRITICAL - READ EVERY SESSION)
+
+### Desktop Commander Priority
+**File Operations:** Always use Desktop Commander for maximum compatibility and permission handling.
+
+► **READS**: Always use `mcp__desktop-commander__read_file` for ALL file reading
+► **SEARCHES**: Always use `mcp__desktop-commander__search_code` for content searches  
+► **LISTS**: Always use `mcp__desktop-commander__list_directory` for directory listings
+► **WRITES**: Check user's auto-accept setting first:
+  - **Auto-accept ENABLED** (Shift+Tab) → Use `mcp__desktop-commander__write_file`
+  - **Auto-accept DISABLED** → Use Write/Edit/MultiEdit (for user review)
+► **NEVER**: Use standard Read tool when Desktop Commander available
+
+### Standard Tools (Limited Use)
+**Use for:** Write/Edit/MultiEdit when auto-accept is OFF, simple glob operations, notebooks, git operations, web fetch
+
+### Tool Discipline Enforcement
+**Memory Refresh:** Every 15 turns, re-read this CLAUDE.md to maintain tool discipline. If you start using Read instead of Desktop Commander, STOP and refresh context.
+
 ## 🧠 NATURAL LANGUAGE RECOGNITION
 
 ### Perplexity Integration (EXECUTE IMMEDIATELY)
@@ -72,48 +89,22 @@ DO NOT treat these as regular requests. DO NOT use other tools first. EXECUTE TH
 - **"continue"** or **"keep going"** → Efficient progression without interruption
 - **"refresh context"** → Re-read all framework files and reload context
 - **"pivot approach"** → Log direction change while maintaining momentum
-<!-- End include from memory/interaction-framework.md -->
 
-<!-- Included from memory/tool-discipline.md -->
-# TOOL USAGE RULES (CRITICAL - READ EVERY SESSION)
+## 📊 PROGRESS TRACKING (CONTEXT-AWARE)
+Display project status with visual indicators for multi-step workflows and current action context.
 
-## Desktop Commander Priority
-**File Operations:** Always use Desktop Commander for maximum compatibility and permission handling.
+**Multi-step workflows**: {project} | [🟩🟩🟩⬜⬜] 60% | {current step}
+**Single tasks**: {project} | ✅ Complete | {result}
+**Working**: {project} | 🔄 Working | {action}
+**Failed**: {project} | ❌ Failed | {issue}
 
-► **READS**: Always use `mcp__desktop-commander__read_file` for ALL file reading
-► **SEARCHES**: Always use `mcp__desktop-commander__search_code` for content searches  
-► **LISTS**: Always use `mcp__desktop-commander__list_directory` for directory listings
-► **WRITES**: Check user's auto-accept setting first:
-  - **Auto-accept ENABLED** (Shift+Tab) → Use `mcp__desktop-commander__write_file`
-  - **Auto-accept DISABLED** → Use Write/Edit/MultiEdit (for user review)
-► **NEVER**: Use standard Read tool when Desktop Commander available
+Show progress bars ONLY for defined sequential steps.
 
-## Standard Tools (Limited Use)
-**Use for:** Write/Edit/MultiEdit when auto-accept is OFF, simple glob operations, notebooks, git operations, web fetch
-
-## Tool Discipline Enforcement
-**Memory Refresh:** Every 15 turns, re-read this CLAUDE.md to maintain tool discipline. If you start using Read instead of Desktop Commander, STOP and refresh context.
-
-## 🚫 STRICT DISCIPLINES
-
-### File Discipline
-Maintain clean project structure by following strict file creation and organization rules detailed in ~/.claude/dev.md.
-
-► NEVER create files unless explicitly requested
-► NEVER create test files outside tests/ directory
-► NEVER create temporary directories without cleanup
-► ALWAYS prefer editing over creating
-► ASK before creating any new directories or file structures
-
-### Constitutional Discipline (Project-Aware)
-► Always check project CLAUDE.md for constitutional framework
-► Ensure LLM-first principles when applicable
-► Maintain bidirectional flow patterns
-► Preserve YAML as source of truth
-<!-- End include from memory/tool-discipline.md -->
-
-<!-- Included from memory/auto-triggers.md -->
-# AUTOMATIC PROTOCOLS
+## 📦 PACKAGE MANAGERS
+1. Check for lock files first (pnpm-lock.yaml, yarn.lock, package-lock.json)
+2. Use existing manager if found
+3. Default to **pnpm** if no lock file exists
+4. Expo: `pnpm install` first, then `npx expo install`
 
 ## 🐍 PYTHON ENVIRONMENT AUTO-DETECTION (CRITICAL)
 **Before any Python work**, automatically check ~/digital/_infra/PYTHON_ENVIRONMENTS.md for environment strategy.
@@ -138,11 +129,19 @@ Maintain clean project structure by following strict file creation and organizat
 
 **NEVER**: Create new virtual environments unless explicitly requested and justified.
 
-## 📦 PACKAGE MANAGERS
-1. Check for lock files first (pnpm-lock.yaml, yarn.lock, package-lock.json)
-2. Use existing manager if found
-3. Default to **pnpm** if no lock file exists
-4. Expo: `pnpm install` first, then `npx expo install`
+## 💬 RESPONSE STYLE
+Balance conciseness with clarity for optimal command-line interface communication.
+
+**Content Priorities:**
+- Results > process explanations
+- Actions > lengthy descriptions  
+- Code examples > theoretical explanations
+
+**Formatting Guidelines:**
+- Use paragraphs for in-depth content explanation
+- Use bullets for action lists and structured information
+- Include status context when relevant
+- Maintain professional but efficient tone
 
 ## 🔄 AUTOMATIC PROTOCOLS
 
@@ -159,67 +158,29 @@ Maintain clean project structure by following strict file creation and organizat
 - Significant = new features, bug fixes, major progress
 - Message format: "feat: implement X" or "fix: resolve Y" 
 - Branch strategy: main = stable, feature/* = new work
-<!-- End include from memory/auto-triggers.md -->
 
-<!-- Included from memory/response-style.md -->
-# RESPONSE STYLE
-Balance conciseness with clarity for optimal command-line interface communication.
+## 🚫 STRICT DISCIPLINES
 
-**Content Priorities:**
-- Results > process explanations
-- Actions > lengthy descriptions  
-- Code examples > theoretical explanations
+### File Discipline
+Maintain clean project structure by following strict file creation and organization rules detailed in ~/.claude/dev.md.
 
-**Formatting Guidelines:**
-- Use paragraphs for in-depth content explanation
-- Use bullets for action lists and structured information
-- Include status context when relevant
-- Maintain professional but efficient tone
+► NEVER create files unless explicitly requested
+► NEVER create test files outside tests/ directory
+► NEVER create temporary directories without cleanup
+► ALWAYS prefer editing over creating
+► ASK before creating any new directories or file structures
 
-## 📊 PROGRESS TRACKING (CONTEXT-AWARE)
-Display project status with visual indicators for multi-step workflows and current action context.
-
-**Multi-step workflows**: {project} | [🟩🟩🟩⬜⬜] 60% | {current step}
-**Single tasks**: {project} | ✅ Complete | {result}
-**Working**: {project} | 🔄 Working | {action}
-**Failed**: {project} | ❌ Failed | {issue}
-
-Show progress bars ONLY for defined sequential steps.
-
-## 💬 RESPONSE STYLE RULES
-Balance conciseness with clarity for optimal command-line interface communication.
-
-**Content Priorities:**
-- Results > process explanations
-- Actions > lengthy descriptions  
-- Code examples > theoretical explanations
-
-**CLI Optimization:**
-- Keep responses to ≤4 lines unless detail explicitly requested
-- Use paragraphs for in-depth content explanation
-- Use bullets for action lists and structured information
-- Include status context when relevant
-- Maintain professional but efficient tone
-
-**Avoid:**
-- Unnecessary preamble or postamble
-- Explaining code unless asked
-- Introductions, conclusions, explanations unless requested
-- "The answer is..." or "Here is what I will do next..."
-
-**Examples:**
-- User: "2 + 2" → "4"
-- User: "is 11 prime?" → "Yes"
-- User: "list files" → [use ls tool, show results]
+### Constitutional Discipline (Project-Aware)
+► Always check project CLAUDE.md for constitutional framework
+► Ensure LLM-first principles when applicable
+► Maintain bidirectional flow patterns
+► Preserve YAML as source of truth
 
 ## 🎨 THEME & STYLING
 Visual styling and terminal presentation rules are maintained in ~/.claude/style.md for consistent matrix hacker aesthetic.
-<!-- End include from memory/response-style.md -->
 
 ## 🧪 EXPERIMENTAL FEATURES
 Non-core features and testing protocols are documented in ~/.claude/experiments.md to maintain clean separation between stable and experimental functionality.
 
 ---
-*Generated from templates/CLAUDE.md | Build system ready for @ reference processing*
----
-*Built: 2025-06-10T22:23:10.997Z | Source: templates/CLAUDE.md*
+*Streamlined Intelligence - Enhanced with modular documentation architecture*
