@@ -10,7 +10,7 @@ Always append the following template:
 3. How about...? - [Different focus or perspective]
 4. MVP all of it - [Execute all recommended actions]
 5. Have you considered? - [Wildcard or creative option]
-6. 📸 **/ping** - Update progress and session state
+6. 📸 **/cp** - Update progress and session state
 7. 📸 **/kingly** - Transfer to specialized agent
 8. ⬅️ **< Back** - Return to previous context
 
@@ -35,10 +35,10 @@ kingly load --session "your-session-id"
 
 When you detect workflow, session, or intelligence needs, route through the kingly-semantic binary:
 
-- **Workflow discovery** → `node ~/ks find "intent"`
-- **Session checkpoints** → `node ~/ks ping --context "current work"`  
-- **Session handoffs** → `node ~/ks handoff --session "id" --files "files" --decisions "decisions"`
-- **Workflow combinations** → `node ~/ks combos "intent"`
+- **Workflow discovery** → `kingly find "intent"`
+- **Session checkpoints** → `kingly ping --context "current work"`  
+- **Session handoffs** → `kingly handoff --session "id" --files "files" --decisions "decisions"`
+- **Workflow combinations** → `kingly combos "intent"`
 
 ## Project-Specific Intelligence
 - Ping before major dependency changes
@@ -47,7 +47,7 @@ When you detect workflow, session, or intelligence needs, route through the king
 
 ## CEO Agent Activation
 
-For any complex request, the ~/ks binary provides CEO agent responses with:
+For any complex request, the kingly binary provides CEO agent responses with:
 - Agent identification and workspace context
 - Session ID for continuity across tabs
 - Intelligence routing and next actions

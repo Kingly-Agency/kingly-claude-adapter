@@ -11,7 +11,7 @@ When user says "/kingly":
 
 2. **Execute Universal Context Search**
    ```bash
-   # Return ALL relevant contexts, not pre-filtered
+   # Use enhanced semantic search with rich YAML content and slug-based contexts
    kingly find "$EXTRACTED_CONTEXT" --all-types
    ```
 
@@ -20,17 +20,19 @@ When user says "/kingly":
    🎯 All relevant contexts for: [extracted context]
    
    **Workflows:**
-   1. [workflow-slug] - [description] (confidence: X%)
-   2. [workflow-slug] - [description] (confidence: X%)
+   1. cognitive-parliament - Multi-perspective decision analysis (89%)
+   2. design-thinking-process - Human-centered innovation framework (84%)
    
    **Tools:**  
-   3. [tool-slug] - [description] (confidence: X%)
+   3. discord-tool - Team communication integration (92%)
+   4. research-mcp-suite - Enhanced research capabilities (87%)
    
    **Agents:**
-   4. [agent-slug] - [description] (confidence: X%)
+   5. deep-researcher - Comprehensive analysis specialist (91%)
    
    **Patterns:**
-   5. [pattern-slug] - [description] (confidence: X%)
+   6. systematic-creativity - Structured ideation framework (88%)
+   7. first-principles-thinking - Core problem analysis (85%)
    
    💡 **Whisper Strategies** (static wisdom):
    • "For complex problems, start with user-motivation understanding"
@@ -39,20 +41,22 @@ When user says "/kingly":
    • "Strategic decisions? Apply CEO multi-perspective analysis"
    ```
 
-4. **Enhanced Selection Interface**
+4. **Flow-Based Selection Interface**
    ```
-   📋 Quick Selection: 
-   • [1-9] - Execute specific context
-   • [combine] - Chain multiple contexts  
-   • [more] - Show additional matches
-   • [strategy] - Get situation-specific wisdom
+   ⚡ **Next Steps:** 
+   • Pick a number (1-7) - Execute specific context
+   • "combine 1+3+6" - Chain multiple contexts intelligently
+   • "more tools" - Show additional matches by type
+   • "why 5?" - Get reasoning for confidence score
+   • Just tell me what feels right - Natural language selection
    ```
 
 5. **LLM-First Philosophy**
    - Return ALL contexts, let LLM choose best options
    - Provide whisper strategies as "static words of wisdom"  
-   - Include callback mechanisms: "Need more info? Try 'kingly status --project'"
-   - Always inform about available context types and combinations
+   - Include callback mechanisms: "Need more info? Try '/checkpoint --resume' or '/research [topic]'"
+   - Always inform about available context types and intelligent combinations
+   - Integrate with checkpoint system for session continuity
 
 6. **Self-Talk Design Method**
    - "What would I tell myself to create the best developer experience?"
@@ -65,13 +69,14 @@ When user says "/kingly":
    - **Everything is Context**: Unified lookup with semantic slugs
    - **Callback Guidance**: Always provide "what's next" options
 
-## Key Improvements from Breakthrough Insights:
+## Key Improvements from Enhanced System:
 
-- **No More Weird Codes**: Use semantic slugs (creative-brainstorming vs 1i)
-- **All Contexts Returned**: Let LLM choose from full set, not pre-filtered top 3
-- **Whisper Strategies**: Static wisdom instead of hardcoded combos
-- **Universal Context Discovery**: Single lookup with --type filters
-- **LLM Callback Awareness**: Always inform about additional information sources
+- **Slug-Based Contexts**: Memorable names (systematic-creativity vs 1a)
+- **Rich YAML Embeddings**: Enhanced semantic search with 73 contexts
+- **Dynamic Type Discovery**: File-system driven context types
+- **Flow-Based Intelligence**: Zero cognitive load command experience
+- **Session Continuity**: Checkpoint system integration for persistent context
+- **Research Integration**: Enhanced /research command with context awareness
 
 ## Example Execution:
 ```
@@ -81,9 +86,13 @@ Context Extracted: "developer experience CLI tool improvement"
 
 kingly find "developer experience CLI tool improvement" --all-types
 
-Returns: user-motivation-framework, systematic-creativity, CEO-perspective, interface-design-patterns, debugging-strategies
+Returns: 
+1. user-motivation-framework - Understand what users actually need (89%)
+2. systematic-creativity - Generate innovative UX solutions (84%)
+3. interface-design-patterns - CLI-specific best practices (87%)  
+4. error-recovery-patterns - Design helpful failure experiences (92%)
 
-Whisper: "For DX improvements, start with user motivation understanding, then apply systematic creativity to interface design"
+Flow Response: "For DX improvements, start with user-motivation (1) to understand pain points, then systematic-creativity (2) for solutions. Want to combine 1+2+4 for comprehensive UX enhancement?"
 ```
 
 **Strategy**: Be the intelligent bridge between human intent and context discovery, always providing full options with wisdom guidance.

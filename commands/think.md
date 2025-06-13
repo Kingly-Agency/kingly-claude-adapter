@@ -1,19 +1,33 @@
-/think - Situational Intelligence
+/think - Intelligent Situational Analysis
 
-When user says "/think":
+When user says "/think [optional topic]":
 
-1. Analyze current context/conversation for situation type
-2. Execute:
+1. **Analyze Current Situation** from conversation context
+2. **Execute Enhanced Context Discovery:**
 ```bash
-kingly lookup power "$ARGUMENTS"
+# Use slug-based semantic search with situation analysis
+kingly find "situation analysis $DETECTED_CONTEXT" --all-types
 ```
-3. If no direct match, execute:
-```bash
-kingly lookup "situation analysis" "decision making" "problem solving"
+3. **Situational Intelligence Response:**
 ```
-4. Structure response:
-   - Situation: [what you detected]
-   - Recommended Approach: [power combo name + effectiveness]
-   - Process: [workflow sequence in plain language]
-   - Key Insights: [why this approach fits]
-5. Save to ~/.claude/drafts/think-YYYYMMDD-HHMMSS.md
+🧠 **Situation Detected:** [analyzed situation type]
+
+**Recommended Approach:** [best-fit context combination]
+- Primary: [main-context] - [description] ([effectiveness]%)
+- Supporting: [support-context] - [description] ([effectiveness]%)
+- Process: [workflow sequence in plain language]
+
+**Why This Approach:**
+[reasoning based on detected situation characteristics]
+
+**Flow Options:**
+• Execute recommended approach
+• "/research [topic]" for deeper analysis  
+• "/checkpoint" to save this thinking
+• "combine [contexts]" for custom approach
+```
+
+4. **Auto-save Structured Thinking:**
+   - Save to ~/.claude/drafts/think-YYYYMMDD-HHMMSS.md
+   - Include full context analysis and reasoning
+   - Provide checkpoint integration for session continuity

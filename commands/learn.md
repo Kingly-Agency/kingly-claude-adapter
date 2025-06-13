@@ -1,8 +1,4 @@
-/learn - Adopt a pattern
-
-When user says "/learn":
-
-1. Terminal: `kingly lookup kingly-builder $ARGUMENTS`
+1. Terminal: `kingly kingly-builder $ARGUMENTS`
 2. For each major scenario:
    - Identify situation applicability
    - Note effectiveness ratings

@@ -6,15 +6,15 @@ Kingly Intelligence System provides enhanced Claude Code capabilities through na
 
 ## NATURAL LANGUAGE TRIGGERS
 
-**"perp"** / **"perp this"** → IMMEDIATE Perplexity research with context
-**"ping"** → Update progress and session state
+**"research"** / **"research this"** → IMMEDIATE enhanced research with context
+**"checkpoint"** → Update progress and session state with unified modes
 
 ## CEO MODE
 Session initialization: Load semantic API by running `kingly load` and announce "~ online"
 
 ## Important!!!
-If recently compacted attempt to pass the session id to the CEO MODE command:
-Terminal: `kingly load --handoff <path|id>`
+If recently compacted attempt to pass the session id to the enhanced checkpoint system:
+Terminal: `kingly checkpoint --resume --session <session-id>`
 
 ## NINJA MODE:
 Look for opportunities to use /kingly silently to surface contextually relevant workflows. You can polymorph into various agents given the situation and perform parallel silent workflows and patterns to boost your Kingly IQ for any given situation.

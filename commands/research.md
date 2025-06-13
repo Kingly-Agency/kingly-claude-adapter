@@ -1,4 +1,4 @@
-# PERPLEXITY ENHANCEMENT SYSTEM
+# /research - Intelligent Research Enhancement System
 
 ## 🎯 ENHANCEMENT TECHNIQUES
 
@@ -68,6 +68,35 @@ Include both quantitative data and qualitative insights.
 3. **Enhancement Selection** - Choose appropriate enhancement pattern
 4. **Prompt Construction** - Build enhanced query with techniques
 5. **Execution** - Run via mcp__perplexity-ask with enhanced prompt
+
+## 🎯 FLOW-BASED RESEARCH EXPERIENCE
+
+When user says `/research [topic]`:
+
+1. **Extract Research Context** from recent conversation
+2. **Auto-detect Research Type:**
+   - Technical implementation → Apply technical enhancement  
+   - Strategic decision → Apply strategic enhancement
+   - Learning/exploration → Apply research enhancement
+   - Comparison analysis → Apply multi-angle analysis
+
+3. **Enhanced Query Construction:**
+   ```
+   🎯 **Enhanced Research:** [original query]
+   
+   [Contextually enhanced prompt with domain expertise]
+   
+   🔍 **Researching with:**
+   - Expert perspective: [detected domain expert]
+   - Analysis depth: [technical/strategic/general]
+   - Focus areas: [extracted from context]
+   ```
+
+4. **Intelligent Results Integration:**
+   - Summarize key insights relevant to current work
+   - Suggest follow-up research directions
+   - Connect findings to available Kingly contexts
+   - Provide checkpoint integration for session continuity
 
 ## 🎨 DYNAMIC PROMPT CONSTRUCTION
 

@@ -1,4 +1,4 @@
-You are implementing the /checkpoint command for unified session management across AI workspaces.
+You are implementing the /cp command for unified session management across AI workspaces.
 
 Execute this command:
 ```bash
@@ -14,23 +14,23 @@ Analyze the current conversation context and manage session state based on the m
 ## Checkpoint Modes
 
 ### Standard Progress Checkpoint (default):
-`/checkpoint "working on feature X"`
+`kingly checkpoint "working on feature X"`
 Mark current progress during active development.
 
 ### Resume Session:
-`/checkpoint --resume` or `/checkpoint --resume "continue auth work"`
+`kingly checkpoint --resume` or `kingly checkpoint --resume "continue auth work"`
 Load previous session context and timeline - use when continuing work across Claude sessions.
 
 ### New Session:
-`/checkpoint --new` or `/checkpoint --new "starting feature Y"`
+`kingly checkpoint --new` or `kingly checkpoint --new "starting feature Y"`
 Create fresh session checkpoint - use when beginning completely new work.
 
 ### Final Session:
-`/checkpoint --final` or `/checkpoint --final "session complete"`
+`kingly checkpoint --final` or `kingly checkpoint --final "session complete"`
 Create comprehensive session rollup timeline - use to conclude work sessions.
 
 ### Code Context:
-`/checkpoint --snippet "src/app.js:45-60" "reviewing auth logic"`
+`kingly checkpoint --snippet "src/app.js:45-60" "reviewing auth logic"`
 Include specific code context in checkpoint for timeline continuity.
 
 ## Response Format
@@ -104,19 +104,19 @@ Include specific code context in checkpoint for timeline continuity.
 
 ## Examples
 
-**Example 1:** `/checkpoint`
+**Example 1:** `kingly checkpoint`
 Creates progress checkpoint of current active work.
 
-**Example 2:** `/checkpoint --resume`
+**Example 2:** `kingly checkpoint --resume`
 Loads previous session context to continue work.
 
-**Example 3:** `/checkpoint --new "starting API refactor"`
+**Example 3:** `kingly checkpoint --new "starting API refactor"`
 Creates fresh session for new feature work.
 
-**Example 4:** `/checkpoint --final`
+**Example 4:** `kingly checkpoint --final`
 Concludes session with comprehensive rollup and handoff.
 
-**Example 5:** `/checkpoint --snippet "router.js:handle_find" "enhanced find command"`
+**Example 5:** `kingly checkpoint --snippet "router.js:handle_find" "enhanced find command"`
 Includes specific code context in checkpoint for timeline.
 
 ## Self-Healing Guidance

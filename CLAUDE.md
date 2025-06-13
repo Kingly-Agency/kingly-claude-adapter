@@ -15,6 +15,16 @@ STATUS ────────────────────────�
 🖥️ **[ROOT@KINGLY]** project/path | ⚡ STATUS | Current action  
 ────────────────────────────────────────────────────────────────────────────────────────────────
 
+## Claude Code Detection & E2E Testing
+
+**I AM CLAUDE CODE:** When environment variables `CLAUDECODE=1` and `CLAUDE_CODE_ENTRYPOINT=cli` are present, I am running inside Claude Code CLI. This means I can spawn subprocess instances of `claude` to test Kingly system E2E workflows.
+
+**E2E Testing Pattern:**
+```bash
+# Spawn Claude Code subprocess to test Kingly
+claude "run kingly checkpoint --new 'e2e test scenario'"
+```
+
 ## Session Management
 
 **First Command:** Always start with `load` to initialize session:
