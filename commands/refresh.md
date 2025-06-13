@@ -1,5 +1,8 @@
-## 🎯 MANDATORY: ALWAYS END RESPONSES WITH FOLLOW-UP TEMPLATE
+## 🎯 FOLLOW-UP FORMATTING
 
+Always append the following template:
+
+```markdown
 **FOLLOW-UPS:**
 
 1. My recommendation - [Optimal next step based on analysis]
@@ -14,6 +17,7 @@
 STATUS ─────────────────────────────────────────────────────────────────────────────────────────
 🖥️ **[ROOT@KINGLY]** project/path | ⚡ STATUS | Current action  
 ────────────────────────────────────────────────────────────────────────────────────────────────
+```
 
 ## Session Management
 
@@ -29,24 +33,12 @@ kingly load --session "your-session-id"
 
 ## Natural Language Detection
 
-When you detect workflow, session, or intelligence needs, use these commands:
+When you detect workflow, session, or intelligence needs, route through the kingly-semantic binary:
 
-- **Workflow discovery** → 
-```bash
-kingly find "$ARGUMENTS"
-```
-- **Session checkpoints** → 
-```bash
-kingly ping --context "$ARGUMENTS"
-```  
-- **Session handoffs** → 
-```bash
-kingly handoff --session "$ARGUMENTS" --files "$ARGUMENTS" --decisions "$ARGUMENTS"
-```
-- **Workflow combinations** → 
-```bash
-kingly combos "$ARGUMENTS"
-```
+- **Workflow discovery** → `node ~/ks find "intent"`
+- **Session checkpoints** → `node ~/ks ping --context "current work"`  
+- **Session handoffs** → `node ~/ks handoff --session "id" --files "files" --decisions "decisions"`
+- **Workflow combinations** → `node ~/ks combos "intent"`
 
 ## Project-Specific Intelligence
 - Ping before major dependency changes
@@ -55,7 +47,7 @@ kingly combos "$ARGUMENTS"
 
 ## CEO Agent Activation
 
-For any complex request, the kingly command provides CEO agent responses with:
+For any complex request, the ~/ks binary provides CEO agent responses with:
 - Agent identification and workspace context
 - Session ID for continuity across tabs
 - Intelligence routing and next actions

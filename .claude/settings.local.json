@@ -1,17 +1,15 @@
 {
   "permissions": {
     "allow": [
+      "mcp__desktop-commander(*)",
+      "mcp__desktop-commander__get_file_info",
       "mcp__desktop-commander__read_file",
       "mcp__desktop-commander__list_directory",
-      "mcp__desktop-commander__search_files",
-      "WebFetch(domain:docs.anthropic.com)",
-      "mcp__desktop-commander__search_code",
-      "mcp__desktop-commander__write_file",
-      "mcp__desktop-commander__create_directory",
-      "mcp__desktop-commander__move_file",
-      "mcp__desktop-commander__read_multiple_files",
-      "Bash(rg:*)",
-      "Bash(node build/claude-builder.js)"
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(kingly-semantic ping:*)",
+      "mcp__desktop-commander__get_config",
+      "mcp__desktop-commander__write_file"
     ],
     "deny": []
   }

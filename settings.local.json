@@ -1,10 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "mcp__desktop-commander__search_files",
-      "mcp__desktop-commander__execute_command",
-      "mcp__desktop-commander__read_output",
-      "mcp__perplexity-ask__perplexity_ask"
+      "Bash(mkdir:*)",
+      "mcp__desktop-commander__search_code",
+      "mcp__desktop-commander__list_directory",
+      "mcp__desktop-commander__read_file",
+      "mcp__desktop-commander__create_directory",
+      "mcp__desktop-commander__create_directory",
+      "mcp__desktop-commander__write_file",
+      "mcp__desktop-commander__write_file"
     ],
     "deny": []
   }
