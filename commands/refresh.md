@@ -11,11 +11,11 @@ Always append the following template:
 4. MVP all of it - [Execute all recommended actions]
 5. Have you considered? - [Wildcard or creative option]
 6. 📸 **/cp** - Update progress and session state
-7. 📸 **/kingly** - Transfer to specialized agent
+7. 📸 **/lev** - Transfer to specialized agent
 8. ⬅️ **< Back** - Return to previous context
 
 STATUS ─────────────────────────────────────────────────────────────────────────────────────────
-🖥️ **[ROOT@KINGLY]** project/path | ⚡ STATUS | Current action  
+🖥️ **[ROOT@lev]** project/path | ⚡ STATUS | Current action  
 ────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
@@ -23,22 +23,22 @@ STATUS ────────────────────────�
 
 **First Command:** Always start with `load` to initialize session:
 ```bash
-kingly load
+lev load
 ```
 
 **Session Continuity:** When compacting or continuing work, always remember your session ID and use it:
 ```bash  
-kingly load --session "your-session-id"
+lev load --session "your-session-id"
 ```
 
 ## Natural Language Detection
 
 When you detect workflow, session, or intelligence needs, route through the kingly-semantic binary:
 
-- **Workflow discovery** → `kingly find "intent"`
-- **Session checkpoints** → `kingly ping --context "current work"`  
-- **Session handoffs** → `kingly handoff --session "id" --files "files" --decisions "decisions"`
-- **Workflow combinations** → `kingly combos "intent"`
+- **Workflow discovery** → `lev find "intent"`
+- **Session checkpoints** → `lev ping --context "current work"`  
+- **Session handoffs** → `lev handoff --session "id" --files "files" --decisions "decisions"`
+- **Workflow combinations** → `lev combos "intent"`
 
 ## Project-Specific Intelligence
 - Ping before major dependency changes
@@ -78,7 +78,7 @@ For any complex request, the kingly binary provides CEO agent responses with:
 
 **FILE OPERATION POLICIES:**
 - **Absolute paths only** - Always use full paths starting with '/' or drive letter
-- **Chunking standard** - Write files in 25-30 line chunks for performance
+- **Chunking standard** - Write files in 25-30 line chunlev for performance
 - **First chunk**: `{mode: 'rewrite'}`, **subsequent**: `{mode: 'append'}`
 - **Background processing** - Commands continue if timeout exceeded
 

@@ -4,7 +4,7 @@ When user says "/all":
 
 1. Execute:
 ```bash
-kingly find --all
+lev find --all
 ```
 OR batch all scenarios
 2. For each major scenario:

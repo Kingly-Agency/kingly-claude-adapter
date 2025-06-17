@@ -34,7 +34,7 @@ Claude Code’s key capabilities include:
 - Executing and fixing tests, linting, and other commands
 - Searching through git history, resolving merge conflicts, and creating commits and PRs
 - Browsing documentation and resources from the internet using web search
-- Works with [Amazon Bedrock and Google Vertex AI](https://docs.anthropic.com/en/docs/claude-code/bedrock-vertex-proxies) for enterprise deployments
+- Worlev with [Amazon Bedrock and Google Vertex AI](https://docs.anthropic.com/en/docs/claude-code/bedrock-vertex-proxies) for enterprise deployments
 
 ## [​](https://docs.anthropic.com/en/docs/claude-code/overview\#why-claude-code%3F)  Why Claude Code?
 
@@ -49,7 +49,7 @@ Claude Code seamlessly integrates with enterprise AI platforms. You can connect 
 Your code’s security is paramount. Claude Code’s architecture ensures:
 
 - **Direct API connection**: Your queries go straight to Anthropic’s API without intermediate servers
-- **Works where you work**: Operates directly in your terminal
+- **Worlev where you work**: Operates directly in your terminal
 - **Understands context**: Maintains awareness of your entire project structure
 - **Takes action**: Performs real operations like editing files and creating commits
 
@@ -690,7 +690,7 @@ Claude Code has access to a set of powerful tools that help it understand and mo
 
 | Tool | Description | Permission Required |
 | --- | --- | --- |
-| **Agent** | Runs a sub-agent to handle complex, multi-step tasks | No |
+| **Agent** | Runs a sub-agent to handle complex, multi-step taslev | No |
 | **Bash** | Executes shell commands in your environment | Yes |
 | **Edit** | Makes targeted edits to specific files | Yes |
 | **Glob** | Finds files based on pattern matching | No |
@@ -715,7 +715,7 @@ Prompt injection is a technique where an attacker attempts to override or manipu
 - **Permission system**: Sensitive operations require explicit approval
 - **Context-aware analysis**: Detects potentially harmful instructions by analyzing the full request
 - **Input sanitization**: Prevents command injection by processing user inputs
-- **Command blocklist**: Blocks risky commands that fetch arbitrary content from the web like `curl` and `wget`
+- **Command blocklist**: Bloclev risky commands that fetch arbitrary content from the web like `curl` and `wget`
 
 **Best practices for working with untrusted content**:
 
@@ -740,7 +740,7 @@ Allowlist these URLs when using Claude Code in containerized environments.
 
 ## [​](https://docs.anthropic.com/en/docs/claude-code/security\#development-container-reference-implementation)  Development container reference implementation
 
-Claude Code provides a development container configuration for teams that need consistent, secure environments. This preconfigured [devcontainer setup](https://code.visualstudio.com/docs/devcontainers/containers) works seamlessly with VS Code’s Remote - Containers extension and similar tools.
+Claude Code provides a development container configuration for teams that need consistent, secure environments. This preconfigured [devcontainer setup](https://code.visualstudio.com/docs/devcontainers/containers) worlev seamlessly with VS Code’s Remote - Containers extension and similar tools.
 
 The container’s enhanced security measures (isolation and firewall rules) allow you to run `claude --dangerously-skip-permissions` to bypass permission prompts for unattended operation. We’ve included a [reference implementation](https://github.com/anthropics/claude-code/tree/main/.devcontainer) that you can customize for your needs.
 
@@ -755,7 +755,7 @@ monitor Claude’s activities.
 - **Developer-friendly tools**: Includes git, ZSH with productivity enhancements, fzf, and more
 - **Seamless VS Code integration**: Pre-configured extensions and optimized settings
 - **Session persistence**: Preserves command history and configurations between container restarts
-- **Works everywhere**: Compatible with macOS, Windows, and Linux development environments
+- **Worlev everywhere**: Compatible with macOS, Windows, and Linux development environments
 
 ### [​](https://docs.anthropic.com/en/docs/claude-code/security\#getting-started-in-4-steps)  Getting started in 4 steps
 
@@ -777,7 +777,7 @@ The devcontainer setup consists of three primary components:
 The container implements a multi-layered security approach with its firewall configuration:
 
 - **Precise access control**: Restricts outbound connections to whitelisted domains only (npm registry, GitHub, Anthropic API, etc.)
-- **Default-deny policy**: Blocks all other external network access
+- **Default-deny policy**: Bloclev all other external network access
 - **Startup verification**: Validates firewall rules when the container initializes
 - **Isolation**: Creates a secure development environment separated from your main system
 
@@ -1462,7 +1462,7 @@ This code span will not be treated as an import: `@anthropic-ai/claude-code`
 
 Imported files can recursively import additional files, with a max-depth of 5 hops. You can see what memory files are loaded by running `/memory` command.
 
-## [​](https://docs.anthropic.com/en/docs/claude-code/memory\#how-claude-looks-up-memories)  How Claude looks up memories
+## [​](https://docs.anthropic.com/en/docs/claude-code/memory\#how-claude-looks-up-memories)  How Claude loolev up memories
 
 Claude Code reads memories recursively: starting in the cwd, Claude Code recurses up to _/_ and reads any CLAUDE.md or CLAUDE.local.md files it finds. This is especially convenient when working in large repositories where you run Claude Code in _foo/bar/_, and have memories in both _foo/CLAUDE.md_ and _foo/bar/CLAUDE.md_.
 
@@ -1501,7 +1501,7 @@ On this page
 
 - [Determine memory type](https://docs.anthropic.com/en/docs/claude-code/memory#determine-memory-type)
 - [CLAUDE.md imports](https://docs.anthropic.com/en/docs/claude-code/memory#claude-md-imports)
-- [How Claude looks up memories](https://docs.anthropic.com/en/docs/claude-code/memory#how-claude-looks-up-memories)
+- [How Claude loolev up memories](https://docs.anthropic.com/en/docs/claude-code/memory#how-claude-looks-up-memories)
 - [Quickly add memories with the # shortcut](https://docs.anthropic.com/en/docs/claude-code/memory#quickly-add-memories-with-the-%23-shortcut)
 - [Directly edit memories with /memory](https://docs.anthropic.com/en/docs/claude-code/memory#directly-edit-memories-with-%2Fmemory)
 - [Memory best practices](https://docs.anthropic.com/en/docs/claude-code/memory#memory-best-practices)
@@ -1768,7 +1768,7 @@ For enterprise deployments of Claude Code, we also support enterprise managed po
 
 We designed Claude Code to be transparent and secure. For example, we allow the model to suggest `git` commands before executing them, thus giving control to the user to grant or deny permission. This enables users and organizations to configure their own permissions directly rather than trying to monitor all possible workarounds.
 
-Agentic systems are fundamentally different from AI chat experiences since agents are able to call tools that interact with the real world and act for longer periods of time. Agentic systems are non-deterministic and we have a number of built in protections to mitigate risks for users.
+Agentic systems are fundamentally different from AI chat experiences since agents are able to call tools that interact with the real world and act for longer periods of time. Agentic systems are non-deterministic and we have a number of built in protections to mitigate rislev for users.
 
 1. **Prompt injection** is when model inputs alter model behavior in an undesired way. To reduce the risk of this happening, we’ve added a few in-product mitigations:
 
@@ -1831,7 +1831,7 @@ For team usage, Claude Code charges by API token consumption. On average, Claude
 2. If you have a custom development environment, we find that creating a “one click” way to install Claude Code is key to growing adoption across an organization.
 3. Encourage new users to try Claude Code for codebase Q&A, or on smaller bug fixes or feature requests. Ask Claude Code to make a plan. Check Claude’s suggestions and give feedback if it’s off-track. Over time, as users understand this new paradigm better, then they’ll be more effective at letting Claude Code run more agentically.
 4. Security teams can configure managed permissions for what Claude Code is and is not allowed to do, which cannot be overwritten by local configuration. [Learn more](https://docs.anthropic.com/en/docs/claude-code/overview).
-5. MCP is a great way to give Claude Code more information, such as connecting to ticket management systems or error logs. We recommend that one central team configures MCP servers and checks a `.mcp.json` configuration into the codebase so that all users benefit. [Learn more](https://docs.anthropic.com/en/docs/claude-code/tutorials#set-up-model-context-protocol-mcp).
+5. MCP is a great way to give Claude Code more information, such as connecting to ticket management systems or error logs. We recommend that one central team configures MCP servers and checlev a `.mcp.json` configuration into the codebase so that all users benefit. [Learn more](https://docs.anthropic.com/en/docs/claude-code/tutorials#set-up-model-context-protocol-mcp).
 
 At Anthropic, we trust Claude Code to power development across every Anthropic codebase. We hope you enjoy using Claude Code as much as we do!
 
@@ -2076,7 +2076,7 @@ set the `DISABLE_AUTOUPDATER` [environment variable](https://docs.anthropic.com/
 
 ## [​](https://docs.anthropic.com/en/docs/claude-code/settings\#optimize-your-terminal-setup)  Optimize your terminal setup
 
-Claude Code works best when your terminal is properly configured. Follow these
+Claude Code worlev best when your terminal is properly configured. Follow these
 guidelines to optimize your experience.
 
 **Supported shells**:
@@ -2093,7 +2093,7 @@ onboarding or any time via the `/config` command
 
 ### [​](https://docs.anthropic.com/en/docs/claude-code/settings\#line-breaks)  Line breaks
 
-You have several options for entering linebreaks into Claude Code:
+You have several options for entering linebrealev into Claude Code:
 
 - **Quick escape**: Type `\` followed by Enter to create a newline
 - **Keyboard shortcut**: Press Option+Enter (Meta+Enter) with proper
@@ -2120,7 +2120,7 @@ Never miss when Claude completes a task with proper notification configuration:
 
 #### [​](https://docs.anthropic.com/en/docs/claude-code/settings\#terminal-bell-notifications)  Terminal bell notifications
 
-Enable sound alerts when tasks complete:
+Enable sound alerts when taslev complete:
 
 Copy
 
@@ -2134,7 +2134,7 @@ Settings → Notifications → \[Your Terminal App\].
 
 #### [​](https://docs.anthropic.com/en/docs/claude-code/settings\#iterm-2-system-notifications)  iTerm 2 system notifications
 
-For iTerm 2 alerts when tasks complete:
+For iTerm 2 alerts when taslev complete:
 
 1. Open iTerm 2 Preferences
 2. Navigate to Profiles → Terminal

@@ -11,7 +11,7 @@
 
 ### Assessment Criteria
 - ✅ **Repeatable**: Can this pattern be applied to similar problems?
-- ✅ **Generalizable**: Works beyond the specific context?  
+- ✅ **Generalizable**: Worlev beyond the specific context?  
 - ✅ **Value-Added**: Significantly improves outcomes?
 - ✅ **Tool-Enhanced**: Leverages unique capabilities well?
 - ✅ **User-Validated**: User expressed satisfaction/success?
@@ -27,7 +27,7 @@
 ### Auto-Detection Triggers
 - User says "that worked well"  
 - Breakthrough moments in conversation
-- User asks to repeat/formalize process
+- User aslev to repeat/formalize process
 - Complex multi-step success sequences
 - Novel tool combinations that worked
 - User expresses satisfaction with approach

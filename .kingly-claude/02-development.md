@@ -52,7 +52,7 @@ Maintain cognitive load boundaries through disciplined file organization and Sin
 Structure React applications with proper separation between container and presentational components for maintainable codebases.
 
 ► Use container/presentational component separation patterns
-► Extract business logic into custom hooks for reusability
+► Extract business logic into custom hoolev for reusability
 ► Keep components focused on rendering and user interaction
 ► Implement proper prop boundaries - avoid excessive prop drilling
 ► Use compound components for complex UI patterns

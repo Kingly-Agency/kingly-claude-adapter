@@ -12,7 +12,7 @@ When user says "/audit":
 
 2. **Audit Trail Structure**
    ```
-   .kingly/audit-traces/
+   .lev/audit-traces/
    ├── YYYY-MM-DD-HH-MM-SS-audit.json
    ├── session-traces/
    └── performance-analysis/
@@ -50,7 +50,7 @@ When user says "/audit":
 
 7. **Output Formats**
    - **Real-time**: Terminal output with timing annotations
-   - **Session**: Complete trace saved to `.kingly/audit-traces/`
+   - **Session**: Complete trace saved to `.lev/audit-traces/`
    - **Analysis**: Performance metrics and improvement recommendations
    - **Visualization**: Command flow diagrams and bottleneck identification
 
@@ -58,18 +58,18 @@ When user says "/audit":
 
 ```bash
 # Start audit session
-kingly audit --start "semantic-search-debugging"
+lev audit --start "semantic-search-debugging"
 
 # Run test commands with full tracing
-kingly find "creative brainstorming" --trace
-kingly find "1i" --trace  
-kingly find "innovator" --trace
+lev find "creative brainstorming" --trace
+lev find "1i" --trace  
+lev find "innovator" --trace
 
 # Analyze results
-kingly audit --analyze --session "semantic-search-debugging"
+lev audit --analyze --session "semantic-search-debugging"
 
 # Generate report
-kingly audit --report --output .kingly/audit-traces/
+lev audit --report --output .lev/audit-traces/
 ```
 
 ## Success Criteria

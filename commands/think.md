@@ -6,7 +6,7 @@ When user says "/think [optional topic]":
 2. **Execute Enhanced Context Discovery:**
 ```bash
 # Use slug-based semantic search with situation analysis
-kingly find "situation analysis $DETECTED_CONTEXT" --all-types
+lev find "situation analysis $DETECTED_CONTEXT" --all-types
 ```
 3. **Situational Intelligence Response:**
 ```

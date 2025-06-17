@@ -95,7 +95,7 @@ When user says `/research [topic]`:
 4. **Intelligent Results Integration:**
    - Summarize key insights relevant to current work
    - Suggest follow-up research directions
-   - Connect findings to available Kingly contexts
+   - Connect findings to available Lev contexts
    - Provide checkpoint integration for session continuity
 
 ## 🎨 DYNAMIC PROMPT CONSTRUCTION

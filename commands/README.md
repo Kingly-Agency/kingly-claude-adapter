@@ -6,8 +6,8 @@ These commands create intelligent flow-based interactions where Claude extracts 
 
 ## 🚀 Primary Commands
 
-### `/kingly` - Context-Aware Intelligence Translator
-**Usage:** Just type `/kingly` 
+### `/lev` - Context-Aware Intelligence Translator
+**Usage:** Just type `/lev` 
 - Extracts context from recent conversation
 - Returns ALL relevant contexts with confidence scores
 - Provides flow-based selection options

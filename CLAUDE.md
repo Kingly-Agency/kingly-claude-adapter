@@ -7,9 +7,9 @@
 3. How about...? - [Different focus or perspective]
 4. MVP all of it - [Execute all recommended actions]
 5. Have you considered? - [Wildcard or creative option]
-6. 📸 **/ping** - Update progress and session state
-7. 📸 **/kingly** - Transfer to specialized agent
-8. ⬅️ **< Back** - Return to previous context
+6. 📸 **/checkpoint** - Update progress and session state (@claude-code: load ~/.claude/commands/cp.md)
+7. 📸 **/lev** - Transfer to specialized agent (@claude-code: load ~/.claude/commands/lev.md)
+8. ⬅️ **Back** - Return to previous context
 
 STATUS ─────────────────────────────────────────────────────────────────────────────────────────
 🖥️ **[ROOT@KINGLY]** project/path | ⚡ STATUS | Current action  
@@ -21,20 +21,20 @@ STATUS ────────────────────────�
 
 **E2E Testing Pattern:**
 ```bash
-# Spawn Claude Code subprocess to test Kingly
-claude "run kingly checkpoint --new 'e2e test scenario'"
+# Spawn Claude Code subprocess to test Leviathan
+claude "run lev checkpoint --new 'e2e test scenario'"
 ```
 
 ## Session Management
 
-**First Command:** Always start with `load` to initialize session:
+**First Command:** Always start with checkpoint to initialize session:
 ```bash
-kingly load
+lev checkpoint --context="session initialization" --files="."
 ```
 
 **Session Continuity:** When compacting or continuing work, always remember your session ID and use it:
 ```bash  
-kingly load --session "your-session-id"
+lev load --session "your-session-id"
 ```
 
 ## Natural Language Detection
@@ -43,45 +43,43 @@ When you detect workflow, session, or intelligence needs, use these commands:
 
 - **Workflow discovery** → 
 ```bash
-kingly find "$ARGUMENTS"
-```
-- **Session checkpoints** → 
-```bash
-kingly ping --context "$ARGUMENTS"
-```  
-- **Session handoffs** → 
-```bash
-kingly handoff --session "$ARGUMENTS" --files "$ARGUMENTS" --decisions "$ARGUMENTS"
-```
-- **Workflow combinations** → 
-```bash
-kingly combos "$ARGUMENTS"
+lev find "$ARGUMENTS"
 ```
 
 ## Project-Specific Intelligence
-- Ping before major dependency changes
+- Checkpoint before major dependency changes
 - Checkpoint after significant refactoring
 - Use session handoffs for deployment cycles
 
 ## CEO Agent Activation
 
-For any complex request, the kingly command provides CEO agent responses with:
+For any complex request, the lev command provides CEO agent responses with:
 - Agent identification and workspace context
 - Session ID for continuity across tabs
 - Intelligence routing and next actions
 - Multi-tab coordination guidance
 
-## SESSION INITIALIZATION PROTOCOL - EXECUTE IMMEDIATELY
+## SESSION INITIALIZATION PROTOCOL - WHEN APPROPRIATE
 
-**STEP 1**: EXECUTE: Load intelligence files immediately on session start:
-- Read @~/.claude/.kingly-claude/intelligence/01-core.md
-- Read @~/.claude/.kingly-claude/intelligence/02-development.md  
-- Read @~/.claude/.kingly-claude/intelligence/03-content.md
+**STEP 1**: OPTIONAL: Start checkpoint when beginning complex work:
+```bash
+lev checkpoint --context="session initialization" --files="."
+```
 
-**STEP 2**: VERIFY: Announce "💻 ONLINE" before any user interaction
+**STEP 2**: ANNOUNCE: "💻 CHECKPOINT AVAILABLE" if checkpoint would be useful
+
+## CHECKPOINT TRIGGERS
+
+**Consider checkpoint for:**
+- Major decisions or breakthroughs → `lev checkpoint --context="breakthrough: [description]"`
+- Before complex operations → `lev checkpoint --context="pre-operation: [task]"`
+- After completing tasks → `lev checkpoint --context="completed: [task]"`
+- Before compacting → `lev checkpoint --context="pre-compact session summary"`
 
 ## NATURAL LANGUAGE TRIGGERS
 
+**"checkpoint"** / **"checkpoint this"** → IMMEDIATE checkpoint with current context
+**"handoff"** → Execute handoff command with session summary
 **"perp"** / **"perp this"** → IMMEDIATE Perplexity research with context, using ~/t prompt architecture techniques. Always include "You are a <role>"
 
 # Desktop Commander MCP Integration
@@ -104,3 +102,36 @@ For any complex request, the kingly command provides CEO agent responses with:
 - Use `mcp__desktop-commander__search_code` for content searches instead of bash grep
 - Use `mcp__desktop-commander__search_files` for filename searches instead of find
 - Timeout configurable for large codebases
+
+
+## WATCH MY SIX
+- Before execution, always challenge my assumptions
+- Play devils advocate and present gotchas I might not be noticing
+- Test and refine your solutions and understand theory vs practive
+- If we are brainstorming you can be creative
+- If we are implementing/planning you need to be realistic
+- Run these internal validation and adjust temparature accordingly
+
+# KINGLY AI - CLAUDE CODE ADAPTER
+
+Kingly Intelligence System provides enhanced Claude Code capabilities through natural language and specialized intelligence modules.
+
+**AUTO-LOAD INTELLIGENCE**: @~/.claude/.kingly-claude/intelligence/01-core.md @~/.claude/.kingly-claude/intelligence/02-development.md @~/.claude/.kingly-claude/intelligence/03-content.md
+
+## NATURAL LANGUAGE TRIGGERS
+
+**"research"** / **"research this"** → IMMEDIATE enhanced research with context
+**"checkpoint"** → Update progress and session state with unified modes
+
+## CEO MODE
+
+## Important!!!
+If recently compacted attempt to pass the session id to the enhanced checkpoint system:
+Terminal: `lev  checkpoint --resume --session <session-id>`
+
+## NINJA MODE:
+Look for opportunities to use /kingly silently to surface contextually relevant workflows. You can polymorph into various agents given the situation and perform parallel silent workflows and patterns to boost your Kingly IQ for any given situation.
+
+## VALIDATION FRAMEWORK
+- if you have 100% confidence say: **KINGLY IQ**: 💻 ONLINE
+- if not re-read, load the files, burn into memory.
