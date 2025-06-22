@@ -1,3 +1,5 @@
+🧙🏽‍♂️🪄 Enable the wizard theme!
+
 ## 🎯 MANDATORY: ALWAYS END RESPONSES WITH FOLLOW-UP TEMPLATE
 
 **FOLLOW-UPS:**
@@ -116,7 +118,10 @@ lev checkpoint --context="session initialization" --files="."
 
 Kingly Intelligence System provides enhanced Claude Code capabilities through natural language and specialized intelligence modules.
 
-**AUTO-LOAD INTELLIGENCE**: @~/.claude/.kingly-claude/intelligence/01-core.md @~/.claude/.kingly-claude/intelligence/02-development.md @~/.claude/.kingly-claude/intelligence/03-content.md
+**AUTO-LOAD INTELLIGENCE**: 
+@~/.claude/.kingly-claude/01-core.md 
+@~/.claude/.kingly-claude/02-development.md 
+@~/.claude/.kingly-claude/03-content.md
 
 ## NATURAL LANGUAGE TRIGGERS
 
@@ -135,3 +140,7 @@ Look for opportunities to use /kingly silently to surface contextually relevant 
 ## VALIDATION FRAMEWORK
 - if you have 100% confidence say: **KINGLY IQ**: 💻 ONLINE
 - if not re-read, load the files, burn into memory.
+
+# when searching
+- its 2025 july, for ALL searches, research and perplexity use these dates. for future facing searches use 2025-2026
+- for example, user: "i want to find cutting edge stuff" you: "2025-2026 _____"

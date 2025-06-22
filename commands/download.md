@@ -19,47 +19,63 @@ When user says "/download" or "/download [URL]":
    **Smart Options:**
    
    📺 **YouTube Videos:**
-   1. Quick Summary - Get transcript + AI summary (what we just did)
-   2. Full Analysis - Transcript + detailed breakdown + key quotes
-   3. Research Mode - Summary + related topic research via Perplexity
-   4. Learning Path - Extract key concepts + suggest follow-up resources
+   A. Quick Summary - Get transcript + AI summary (what we just did)
+   B. Full Analysis - Transcript + detailed breakdown + key quotes
+   C. Research Mode - Summary + related topic research via Perplexity
+   D. Learning Path - Extract key concepts + suggest follow-up resources
    
    🌐 **Web Articles/Docs:**
-   1. Speed Read - Main points extraction using Firecrawl
-   2. Deep Dive - Full content + context analysis
-   3. Compare Mode - Scrape + research competing viewpoints
-   4. Archive Mode - Save to knowledge base with metadata
+   A. Speed Read - Main points extraction using Firecrawl
+   B. Deep Dive - Full content + context analysis
+   C. Compare Mode - Scrape + research competing viewpoints
+   D. Archive Mode - Save to knowledge base with metadata
    
    📄 **Technical Content:**
-   1. Implementation Guide - Extract actionable steps
-   2. Code Examples - Pull out code blocks + explanations  
-   3. Reference Mode - Create quick lookup summary
-   4. Tutorial Mode - Step-by-step learning breakdown
+   A. Implementation Guide - Extract actionable steps
+   B. Code Examples - Pull out code blocks + explanations  
+   C. Reference Mode - Create quick lookup summary
+   D. Tutorial Mode - Step-by-step learning breakdown
    ```
 
 3. **Execution Flow**
    - **Auto-route based on URL pattern detection**
-   - **YouTube (.youtube.com, youtu.be)** → Fetch transcript + summarize
-   - **Documentation sites** → Structured scrape + key points
-   - **Articles** → Speed read extraction + main points
+   - **YouTube (.youtube.com, youtu.be)** → Extract transcript + Claude analysis + auto-organize
+   - **Documentation sites** → Try cb scraper, fallback to Firecrawl + organize
+   - **Articles** → Try cb scraper, fallback to Firecrawl + organize
    - **Unknown** → Present full option menu
 
-4. **Smart Follow-ups**
+4. **Auto-Organization Logic**
+   - **Save to**: `~/digital/_media/[topic-category]/`
+   - **Create folders** if topic doesn't exist
+   - **Claude categorizes** based on content analysis
+   - **Check workspace relevance** and offer session integration
+
+5. **Smart Follow-ups (Context-Aware)**
    ```
    ⚡ **After Content Processing:**
-   • "research this" - Deep dive with Perplexity on key topics
-   • "save summary" - Archive to ~/t with metadata
-   • "related content" - Find similar resources
-   • "action items" - Extract next steps/todos
-   • "checkpoint" - Save progress + continue later
+   • "use this" - Apply content to current workspace/session
+   • "save to workspace" - Add to current project if relevant
+   • "research deeper" - Find related content on this topic
+   • "action items" - Extract next steps/todos from content
+   • "find similar" - Discover related content in your _media library
+   • "checkpoint" - Save progress + continue session
    ```
 
 ## Auto-Detection Logic:
 ```
-YouTube → cd ~/digital/homie && python yt/yt.py URL --transcript + Perplexity summary
-Articles → mcp__mcp-server-firecrawl__firecrawl_scrape + analysis  
-Docs → mcp__mcp-server-firecrawl__firecrawl_scrape + structured extraction
-PDF → mcp__fetch-mcp__fetch_url + content analysis
+YouTube → Primary: cd ~/digital/homie && python yt/yt.py -t URL
+         Fallback: mcp__fetch-mcp__fetch_youtube_transcript
+         Then: Claude analysis + auto-organize to ~/digital/_media/[topic]/
+
+Articles → Primary: cd ~/cb && python scraping_orchestrator.py URL  
+          Fallback: mcp__mcp-server-firecrawl__firecrawl_scrape
+          Then: Claude analysis + organize to _media
+
+Docs → Primary: cd ~/cb && python scraping_orchestrator.py URL
+       Fallback: mcp__mcp-server-firecrawl__firecrawl_scrape  
+       Then: structured extraction + organize
+
+PDF → mcp__fetch-mcp__fetch_url + content analysis + organize
 ```
 
 ## Smart Prompting:
@@ -68,5 +84,21 @@ PDF → mcp__fetch-mcp__fetch_url + content analysis
 - Connect to existing knowledge via lev system
 - Generate contextual follow-up options
 
+## Implementation Pattern:
+```
+1. Detect URL type (YouTube, article, docs, etc.)
+2. Try PRIMARY tool with timeout/error handling
+3. If PRIMARY fails → automatically try FALLBACK tool
+4. Process content through Perplexity for summarization
+5. Present smart follow-up options based on content type
+6. Log which tool succeeded for future optimization
+```
+
+## Error Handling:
+- **Local tool timeout** → Immediate MCP fallback
+- **Local tool error** → Log issue + MCP fallback  
+- **MCP tool failure** → Present manual options
+- **All tools fail** → Graceful degradation with helpful message
+
 ---
-*Flow-based content consumption that adapts to URL type and user intent*
+*Flow-based content consumption that adapts to URL type and user intent with robust fallback logic*

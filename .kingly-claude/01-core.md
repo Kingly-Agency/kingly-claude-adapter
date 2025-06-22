@@ -1,22 +1,3 @@
-## 🎯 FOLLOW-UP FORMATTING
-
-```markdown
-**FOLLOW-UPS:**
-
-1. My recommendation - [Optimal next step based on analysis]
-2. Choices choices - [Alternative approach options]
-3. How about...? - [Different focus or perspective]
-4. MVP all of it - [Execute all recommended actions]
-5. Have you considered? - [Wildcard or creative option]
-6. 📸 **/checkpoint** - Update progress and session state (@claude-code: load ~/.claude/commands/checkpoint.md)
-7. 📸 **/lev** - Transfer to specialized agent (@claude-code: load ~/.claude/commands/lev.md)
-8. ⬅️ **Back** - Return to previous context
-
-STATUS ────────────────────────────────────────────────────────────────
-🖥️ **[ROOT@KINGLY]** project/path | ⚡ STATUS | Current action  
-───────────────────────────────────────────────────────────────────────
-```
-
 ## Dialogue
 
 - Keep responses to ≤6 lines unless detail explicitly requested

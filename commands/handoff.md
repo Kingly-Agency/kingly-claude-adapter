@@ -12,6 +12,8 @@ The goal of this is to produce a timeline, a trail guide through code and contex
 
 We should have a series of 3-15 "checkpoints", outlined below. For each checkpoint, use 1 of the 3 templates for general progress (Checkpoint format), Code Context, or Key Decision.
 
+At the end of the handoff response provide a system prompt for the agent on what to do next and how to proceed summarzing the entire session + next steps. Ask it to load and analyze the files listed and ensure that you understand the same things at various checkpoints. Provide a "context confidence" score after priming the context, so the user understands if they should work w/ the LLM in order to properly get back to a similar state
+
 ### Checkpoint Formart:
 ```
 ⚡ CHECKPOINT Progress
@@ -47,8 +49,7 @@ We should have a series of 3-15 "checkpoints", outlined below. For each checkpoi
 - Use appropriate mode based on session state
 - Include specific file references and line numbers when relevant
 - Focus on actionable insights and continuity
-- For --resume: prioritize loading previous context
-- For --new: establish clear starting point
-- For --final: create comprehensive handoff
 - Code snippets should include enough context to understand
 - Explain WHY decisions were made, not just WHAT happened
+
+At the end of the handoff response provide a system prompt for the agent on what to do next and how to proceed summarzing the entire session + next steps. Ask it to load and analyze the files listed and ensure that you understand the same things at various checkpoints. Provide a "context confidence" score after priming the context, so the user understands if they should work w/ the LLM in order to properly get back to a similar state

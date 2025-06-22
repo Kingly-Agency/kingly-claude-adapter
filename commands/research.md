@@ -6,12 +6,12 @@
 Transform simple queries into sophisticated, contextually-rich prompts for maximum insight generation.
 
 **Enhancement Strategies:**
-1. **Domain Expertise Injection** - Add relevant expert perspectives
-2. **Multi-Angle Analysis** - Request multiple viewpoints and approaches  
-3. **Constraint Integration** - Include specific parameters and limitations
-4. **Output Structuring** - Define clear format and organization requirements
-5. **Depth Calibration** - Adjust technical depth based on context
-6. **Source Prioritization** - Guide toward authoritative and recent sources
+A. **Domain Expertise Injection** - Add relevant expert perspectives
+B. **Multi-Angle Analysis** - Request multiple viewpoints and approaches  
+C. **Constraint Integration** - Include specific parameters and limitations
+D. **Output Structuring** - Define clear format and organization requirements
+E. **Depth Calibration** - Adjust technical depth based on context
+F. **Source Prioritization** - Guide toward authoritative and recent sources
 
 ### **Prompt Enhancement Patterns**
 
@@ -19,11 +19,11 @@ Transform simple queries into sophisticated, contextually-rich prompts for maxim
 ```
 You are [relevant expert type] analyzing [specific domain].
 Provide a comprehensive analysis of [query] that includes:
-1. Current state assessment with recent developments
-2. Multiple expert perspectives and methodologies
-3. Practical implications and real-world applications
-4. Potential challenges and limitations
-5. Future directions and emerging trends
+• Current state assessment with recent developments
+• Multiple expert perspectives and methodologies
+• Practical implications and real-world applications
+• Potential challenges and limitations
+• Future directions and emerging trends
 
 Focus on authoritative sources from [timeframe] and prioritize [specific criteria].
 Structure your response with clear sections and actionable insights.

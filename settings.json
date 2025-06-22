@@ -1,5 +1,4 @@
 {
-  "model": "sonnet",
   "allow": [
     "mcp__desktop-commander",
     "mcp__desktop-commander__search_files",

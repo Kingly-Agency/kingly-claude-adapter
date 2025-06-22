@@ -20,19 +20,19 @@ When user says "/lev":
    🎯 All relevant contexts for: [extracted context]
    
    **Workflows:**
-   1. digital-brain-setup - Complete obsidian configuration (92%)
-   2. plugin-development - Custom obsidian plugin creation (87%)
+   A. digital-brain-setup - Complete obsidian configuration (92%)
+   B. plugin-development - Custom obsidian plugin creation (87%)
    
    **Tools:**  
-   3. obsidian-toolkit - Vault management and optimization (94%)
-   4. file-indexer - Large collection processing (89%)
+   C. obsidian-toolkit - Vault management and optimization (94%)
+   D. file-indexer - Large collection processing (89%)
    
    **Agents:**
-   5. knowledge-architect - Information organization specialist (91%)
+   E. knowledge-architect - Information organization specialist (91%)
    
    **Patterns:**
-   6. phase-driven-development - Iterative system building (88%)
-   7. documentation-first - Clear planning before implementation (85%)
+   F. phase-driven-development - Iterative system building (88%)
+   G. documentation-first - Clear planning before implementation (85%)
    
    💡 **Intelligence Strategies** (proven wisdom):
    • "For large file collections, start with basic indexing before custom features"
@@ -44,10 +44,10 @@ When user says "/lev":
 4. **Flow-Based Selection Interface**
    ```
    ⚡ **Next Steps:** 
-   • Pick a number (1-7) - Execute specific context
-   • "combine 1+3+6" - Chain multiple contexts intelligently
+   • Pick a letter (A-G) - Execute specific context
+   • "combine A+C+F" - Chain multiple contexts intelligently
    • "more tools" - Show additional matches by type
-   • "why 5?" - Get reasoning for confidence score
+   • "why E?" - Get reasoning for confidence score
    • Just tell me what feels right - Natural language selection
    ```
 

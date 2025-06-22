@@ -1,1 +1,0 @@
-Refresh ~/.claude/CLAUDE.md, + all linked files. Assess the effectiveness and point out things you're not 80% confident you will remember/follow + the solution.
