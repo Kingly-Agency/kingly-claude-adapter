@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Documentation Generation
+Description: Create documentation from context
+
+When user says "doc", "document this", or "generate docs":
+
+Execute via CLI:
+```bash
+lev doc "$TYPE" "$CONTEXT"
+```
+
+Types: api, readme, adr, guide, reference

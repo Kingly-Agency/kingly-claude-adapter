@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Session Handoff
+Description: Create detailed session timeline for continuity
+
+When user says "handoff" or "transfer session":
+
+Execute via CLI:
+```bash
+lev handoff "$REASON"
+```
+
+Generates 3-15 checkpoints with code context, decisions, and system prompt for next session.

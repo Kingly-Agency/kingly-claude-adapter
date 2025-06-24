@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Situation Report
+Description: Project status and progress overview
+
+When user says "sitrep", "status", or "progress":
+
+Execute via CLI:
+```bash
+lev sitrep
+```
+
+Generates comprehensive project status report with visual progress indicators.

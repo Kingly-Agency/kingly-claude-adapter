@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Validation
+Description: Constitutional compliance validation
+
+When user says "validate" or "check compliance":
+
+Execute via CLI:
+```bash
+lev validate "$CONTEXT"
+```
+
+Checks against 6 constitutional principles and provides compliance report.

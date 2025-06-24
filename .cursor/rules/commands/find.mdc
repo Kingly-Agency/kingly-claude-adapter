@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Semantic Workflow Discovery
+Description: Find relevant workflows, tools, and patterns
+
+When user says "find", "discover", or asks about workflows:
+
+Execute via CLI:
+```bash
+lev find "$EXTRACTED_CONTEXT" --all-types
+```
+
+Returns semantically matched contexts with confidence scores and quick selection codes.

@@ -1,0 +1,19 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Leviathan Direct Access
+Description: Direct routing to any lev command
+
+When user says "lev" followed by any command:
+
+Parse and execute:
+```bash
+lev $COMMAND $ARGUMENTS
+```
+
+Examples:
+- "lev find digital brain" → `lev find "digital brain"`
+- "lev os analyze mastra" → `lev os "analyze mastra"`
+- "lev help" → `lev help`

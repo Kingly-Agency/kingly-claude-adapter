@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Project Initialization
+Description: Bootstrap project with detected configuration
+
+When user says "prime", "setup", or opens new project:
+
+Execute via CLI:
+```bash
+lev prime
+```
+
+Analyzes project and applies appropriate development patterns and workflows.

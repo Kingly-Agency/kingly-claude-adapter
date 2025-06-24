@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Repository Intake
+Description: Analyze repository for LLM-first compliance
+
+When user says "intake" or provides a GitHub URL:
+
+Execute via CLI:
+```bash
+lev intake "$REPOSITORY_URL"
+```
+
+Performs automated workshop intelligence analysis with 8-tier classification.

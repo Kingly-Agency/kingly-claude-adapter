@@ -1,0 +1,51 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Leviathan CLI Command Mappings
+
+Natural language triggers that execute Leviathan CLI commands.
+
+## Core Commands
+
+| Trigger | Command | Purpose |
+|---------|---------|---------|
+| "checkpoint", "cp" | `lev checkpoint` | Save session state |
+| "find", "discover" | `lev find` | Semantic workflow discovery |
+| "intake", "analyze repo" | `lev intake` | Repository analysis |
+| "all", "capabilities" | `lev all` | System overview |
+| "research", "deep dive" | `lev research` | Enhanced investigation |
+| "sitrep", "status" | `lev sitrep` | Project status report |
+| "doc", "document" | `lev doc` | Generate documentation |
+| "prime", "setup" | `lev prime` | Project initialization |
+| "handoff", "transfer" | `lev handoff` | Session transfer |
+
+## Specialized Commands
+
+| Trigger | Command | Purpose |
+|---------|---------|---------|
+| "workshop" | `lev os workshop` | Workshop operations |
+| "memory" | `lev memory` | Memory management |
+| "validate" | `lev validate` | Compliance checking |
+| "lev {cmd}" | `lev {cmd}` | Direct command routing |
+
+## Usage Pattern
+
+```bash
+# User says: "checkpoint before refactoring"
+# Executes: lev checkpoint "before refactoring"
+
+# User says: "find testing workflows"
+# Executes: lev find "testing workflows" --all-types
+
+# User says: "intake https://github.com/org/repo"
+# Executes: lev intake "https://github.com/org/repo"
+```
+
+## Integration
+
+These commands work with:
+- Leviathan CLI (if installed)
+- Leviathan MCP (if connected)
+- Fallback explanations (if neither available)

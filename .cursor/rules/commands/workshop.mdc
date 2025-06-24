@@ -1,0 +1,18 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Workshop Commands
+Description: Access workshop intelligence system
+
+When user mentions "workshop" operations:
+
+Execute appropriate workshop command:
+```bash
+# For general workshop operations
+lev os workshop "$OPERATION"
+
+# For specific intake
+lev intake "$URL"
+```

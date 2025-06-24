@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Memory Operations
+Description: Manage Leviathan memory system
+
+When user mentions memory operations:
+
+Execute via CLI:
+```bash
+lev memory "$OPERATION" "$ARGS"
+```
+
+Operations: store, retrieve, switch-backend, list

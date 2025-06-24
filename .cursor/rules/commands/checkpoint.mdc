@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Checkpoint Session State
+Description: Save current session state via Leviathan
+
+When user says "checkpoint", "cp", or mentions saving session state:
+
+Execute via CLI:
+```bash
+lev checkpoint "$ARGUMENTS"
+```
+
+Auto-extract context from recent messages and create progress checkpoint for session continuity.

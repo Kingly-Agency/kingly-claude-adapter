@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Enhanced Research
+Description: Deep multi-angle investigation
+
+When user says "research", "investigate", or "deep dive":
+
+Execute via CLI:
+```bash
+lev research "$TOPIC"
+```
+
+For enhanced Perplexity integration, use "perp" trigger after research results.

@@ -1,0 +1,16 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Show All Capabilities
+Description: Display complete Leviathan system overview
+
+When user says "all", "capabilities", or "what can you do":
+
+Execute via CLI:
+```bash
+lev all
+```
+
+Shows full system architecture, available commands, and current status.
