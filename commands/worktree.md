@@ -19,7 +19,7 @@ When user says "/worktree" or "/worktree [slug-hint]":
    
    **Proposed Configuration:**
    📁 **Worktree Name:** constitutional-framework-integration
-   📂 **Location:** /Users/user/digital/worktrees/constitutional-framework-integration
+   📂 **Location:** .trees/constitutional-framework-integration
    🌿 **Branch Strategy:** feature/constitutional-framework-integration (new branch)
    📋 **Context Capture:** Last 10 messages about constitutional patterns and validation
    
@@ -46,19 +46,19 @@ When user says "/worktree" or "/worktree [slug-hint]":
    > agency-base-validation
    
    ✅ Updated: agency-base-validation
-   📂 New location: /Users/user/digital/worktrees/agency-base-validation
+   📂 New location: .trees/agency-base-validation
    🌿 New branch: feature/agency-base-validation
    ```
 
    **Option C - Change Location:**
    ```
    📁 **Worktree Location**
-   Current base: /Users/user/digital/worktrees/
+   Current base: .trees/
    
    Options:
-   A. ~/digital/worktrees/ (current)
-   B. ~/digital/kingly/experiments/
-   C. ~/digital/temp-work/
+   A. .trees/ (current - in project folder)
+   B. ~/digital/worktrees/ (global)
+   C. ~/digital/kingly/experiments/
    D. Custom path...
    
    Choice: _
@@ -96,14 +96,15 @@ When user says "/worktree" or "/worktree [slug-hint]":
    ✅ Analyzing git repository state
    ✅ Validating worktree name and location  
    ✅ Calling: worktreeManager.createWorktree(name, branch, options)
-   ✅ Git worktree created at: {configured worktreeBasePath}/{name}
+   ✅ Git worktree created at: .trees/{name}
+   ✅ Adding .trees to .gitignore (if not present)
    ✅ Saving context files to worktree location
    ✅ Registering worktree in tracking system
    
    🎯 **Worktree Ready!**
    
    **Next Steps:**
-   • cd {worktreeBasePath}/{name}
+   • cd .trees/{name}
    • Continue work in isolated environment
    • Manage via: kingly cmd worktree list|remove {name}
    
@@ -119,7 +120,7 @@ When user says "/worktree" or "/worktree [slug-hint]":
    ❌ **Worktree Creation Failed**
    
    **Issue:** Directory already exists
-   **Path:** /Users/user/digital/worktrees/constitutional-framework-integration
+   **Path:** .trees/constitutional-framework-integration
    
    **Options:**
    A. 🗑️ Remove existing and recreate

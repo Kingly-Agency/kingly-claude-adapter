@@ -2,3 +2,7 @@ todos/
 projects/
 statsig/
 ide/
+shell-snapshots/
+tmp/
+logs/
+vendor/

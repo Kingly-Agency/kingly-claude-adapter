@@ -63,9 +63,12 @@ When user says "/download" or "/download [URL]":
 
 ## Auto-Detection Logic:
 ```
-YouTube → Primary: cd ~/digital/homie && python yt/yt.py -t URL
+YouTube → Primary: cd ~/digital/homie && python yt/yt.py -t "URL" --wait -o /tmp/yt_download_${VIDEO_ID}_transcript.txt
          Fallback: mcp__fetch-mcp__fetch_youtube_transcript
-         Then: Claude analysis + auto-organize to ~/digital/_media/[topic]/
+         Then: 1) Read /tmp/yt_download_${VIDEO_ID}_transcript.txt
+               2) Claude analyzes content to determine category
+               3) Move to ~/digital/_media/[category]/[semantic-title]_${VIDEO_ID}.txt
+         Note: Save to temp with video ID, then categorize based on actual content
 
 Articles → Primary: cd ~/cb && python scraping_orchestrator.py URL  
           Fallback: mcp__mcp-server-firecrawl__firecrawl_scrape
