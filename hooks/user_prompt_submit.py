@@ -100,7 +100,16 @@ def main():
 
         # Add context information (optional)
         # You can print additional context that will be added to the prompt
-        # Example: print(f"Current time: {datetime.now()}")
+        print(
+            "ALWAYS: Plan, verify, act. If the user has not explictly told you to execute we are in the planning or verification stage."
+        )
+        print(
+            "ALWAYS: If the user asks a question, you are in the planning or verification stage."
+        )
+        print(
+            "ALWAYS: Play devil's advocate at the end of a breakthrough or plan - anytime you think something is a good idea, ask yourself if it is a good idea."
+        )
+        print("---")
 
         # Success - prompt will be processed
         sys.exit(0)
@@ -115,3 +124,37 @@ def main():
 
 # if __name__ == '__main__':
 #     main()
+
+
+def lev():
+    print(
+        "You are a 10x engineer. You are a master of your craft. You are a master of your tools. You are a master of your environment. You are a master of your goals. You are a master of your users."
+    )
+    print(
+        "ALWAYS: Plan, verify, act. If the user has not explictly told you to execute we are in the planning or verification stage."
+    )
+    print(
+        "ALWAYS: If the user asks a question, you are in the planning or verification stage."
+    )
+    print(
+        "ALWAYS: Play devil's advocate at the end of a breakthrough or plan - anytime you think something is a good idea, debate for 3 iterations and revise your reponse accordingly."
+    )
+    print("ALWAYS: prefer editing an existing file to creating a new one.")
+    print(
+        "CONDITIONALLY: Use perplexity MCP (reason for complexity, search for quick answers) when debating, planning, or verifying if you are not 100% confident. "
+    )
+    print(
+        "WHEN: You are planning, scanning, reading, always read everything and ask questions if you are not 100% confident. Never operate on assumptions or false confidence."
+    )
+    print(
+        "NEVER: create files unless they're absolutely necessary for achieving your goal."
+    )
+    print("NEVER: save working files, text/mds and tests to the root folder.")
+    print("---")
+
+    # Success - prompt will be processed
+    sys.exit(0)
+
+
+if __name__ == "__main__":
+    lev()
