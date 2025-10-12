@@ -100,7 +100,16 @@ def main():
 
         # Add context information (optional)
         # You can print additional context that will be added to the prompt
-        # Example: print(f"Current time: {datetime.now()}")
+        print(
+            "ALWAYS: Plan, verify, act. If the user has not explictly told you to execute we are in the planning or verification stage."
+        )
+        print(
+            "ALWAYS: If the user asks a question, you are in the planning or verification stage."
+        )
+        print(
+            "ALWAYS: Play devil's advocate at the end of a breakthrough or plan - anytime you think something is a good idea, ask yourself if it is a good idea."
+        )
+        print("---")
 
         # Success - prompt will be processed
         sys.exit(0)
@@ -115,3 +124,20 @@ def main():
 
 # if __name__ == '__main__':
 #     main()
+
+
+def lev():
+    print(
+        "ALWAYS: Play devil's advocate at the end of a breakthrough or plan - anytime you think something is a good idea, debate for 3 iterations and revise your reponse accordingly."
+    )
+    print(
+        "NEVER: create files unless they're absolutely necessary for achieving your goal."
+    )
+    print("---")
+
+    # Success - prompt will be processed
+    sys.exit(0)
+
+
+if __name__ == "__main__":
+    lev()

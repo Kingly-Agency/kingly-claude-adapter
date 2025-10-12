@@ -6,3 +6,5 @@ shell-snapshots/
 tmp/
 logs/
 vendor/
+file-history/
+debug/

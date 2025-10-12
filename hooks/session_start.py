@@ -222,5 +222,14 @@ def main():
         sys.exit(0)
 
 
+# Using JSON output to add context
+output = {
+    "hookSpecificOutput": {
+        "hookEventName": "SessionStart",
+        "additionalContext": f"Current date: {datetime.now().strftime('%Y-%m-%d')},  time: {datetime.now().strftime('%H:%M:%S')}",
+    }
+}
+print(json.dumps(output))
+sys.exit(0)
 # if __name__ == '__main__':
 #     main()
