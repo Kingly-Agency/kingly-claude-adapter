@@ -205,8 +205,10 @@
   "enabledPlugins": {
     "domain-memory-agent@claude-code-plugins": true,
     "workflow-orchestrator@claude-code-plugins": true,
-    "overnight-dev@claude-code-plugins": true
+    "overnight-dev@claude-code-plugins": true,
+    "superpowers@superpowers-marketplace": true
   },
+  "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754081769578
   }

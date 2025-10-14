@@ -6,5 +6,13 @@
     },
     "installLocation": "/Users/jean-patricksmith/.claude/plugins/marketplaces/claude-code-plugins",
     "lastUpdated": "2025-10-11T07:23:20.454Z"
+  },
+  "superpowers-marketplace": {
+    "source": {
+      "source": "github",
+      "repo": "obra/superpowers-marketplace"
+    },
+    "installLocation": "/Users/jean-patricksmith/.claude/plugins/marketplaces/superpowers-marketplace",
+    "lastUpdated": "2025-10-12T03:46:00.399Z"
   }
 }
