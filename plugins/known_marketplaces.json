@@ -5,7 +5,7 @@
       "repo": "obra/superpowers-marketplace"
     },
     "installLocation": "/Users/jean-patricksmith/.claude/plugins/marketplaces/superpowers-marketplace",
-    "lastUpdated": "2025-12-03T09:35:00.951Z"
+    "lastUpdated": "2025-10-19T16:51:18.544Z"
   },
   "claude-code-workflows": {
     "source": {
@@ -13,14 +13,6 @@
       "repo": "wshobson/agents"
     },
     "installLocation": "/Users/jean-patricksmith/.claude/plugins/marketplaces/claude-code-workflows",
-    "lastUpdated": "2025-12-03T11:41:48.820Z"
-  },
-  "Mixedbread-Grep": {
-    "source": {
-      "source": "github",
-      "repo": "mixedbread-ai/mgrep"
-    },
-    "installLocation": "/Users/jean-patricksmith/.claude/plugins/marketplaces/Mixedbread-Grep",
-    "lastUpdated": "2025-12-03T20:24:07.084Z"
+    "lastUpdated": "2025-12-07T07:48:34.601Z"
   }
 }

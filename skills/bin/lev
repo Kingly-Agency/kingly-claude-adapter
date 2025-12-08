@@ -1,0 +1,751 @@
+#!/usr/bin/env python3
+
+"""
+Levi CLI
+========
+
+Subcommands:
+- convert: Transform Levi pattern YAML files into Superpowers-compliant skills.
+- session: Emit onboarding context (system prompt + skills list) similar to the Superpowers session hook.
+
+Converted skills are written to ~/.config/superpowers/skills/skills/lev/<pattern>/SKILL.md.
+Mapping notes are appended to ~/.config/lev/docs/lev-patterns-notes.md.
+"""
+
+from __future__ import annotations
+
+import os
+import re
+from argparse import ArgumentParser, Namespace
+from dataclasses import dataclass
+from datetime import date, datetime
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Optional, Tuple
+
+import yaml
+from subprocess import PIPE, run
+
+BASE = Path("~/lev/core/contexts/patterns").expanduser()
+SUPERPOWERS_ROOT = Path(
+    os.environ.get("SUPERPOWERS_SKILLS_ROOT", "~/.config/superpowers/skills")
+).expanduser()
+DEST_BASE = SUPERPOWERS_ROOT / "skills" / "lev"
+NOTES_PATH = Path("~/.config/lev/docs/lev-patterns-notes.md").expanduser()
+TODAY = date(2025, 10, 14)
+
+ACRONYMS = {"ai", "ux", "ui", "okrs", "okr", "api", "qa", "ml", "nps"}
+
+
+def slug_to_title(slug: str) -> str:
+    parts = re.split(r"[-_]+", slug)
+    return " ".join(word.capitalize() for word in parts if word)
+
+
+def humanize_identifier(value: str) -> str:
+    if not value:
+        return ""
+    cleaned = re.sub(r"^[0-9]+[_-]*", "", value)
+    parts = re.split(r"[_-]+", cleaned)
+    words: List[str] = []
+    for part in parts:
+        if not part:
+            continue
+        lower = part.lower()
+        if lower in ACRONYMS:
+            words.append(lower.upper())
+        elif part.isupper():
+            words.append(part)
+        else:
+            words.append(part.capitalize())
+    return " ".join(words)
+
+
+def clean_checklist_item(text: str) -> str:
+    txt = text.strip()
+    if txt.lower().startswith("[ ]"):
+        txt = txt[3:].strip()
+    return txt
+
+
+def ensure_sentence(text: str) -> str:
+    txt = text.strip()
+    if not txt:
+        return txt
+    if txt[-1] not in ".!?":
+        txt += "."
+    return txt
+
+
+def summarize(value: Any) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value.strip()
+    if isinstance(value, bool):
+        return "Yes" if value else "No"
+    if isinstance(value, (int, float)):
+        return str(value)
+    if isinstance(value, list):
+        pieces: List[str] = []
+        for item in value:
+            if isinstance(item, str):
+                pieces.append(item.strip())
+            elif isinstance(item, dict):
+                if {"name", "focus"}.issubset(item.keys()) and len(item) <= 3:
+                    focus = summarize(item.get("focus"))
+                    pieces.append(f"{item['name'].strip()}: {focus}")
+                elif {"negative", "positive"}.issubset(item.keys()):
+                    pieces.append(f"{item['negative']} → {item['positive']}")
+                else:
+                    sub_parts = [
+                        f"{humanize_identifier(str(k))} — {summarize(v)}"
+                        for k, v in item.items()
+                    ]
+                    pieces.append("; ".join([p for p in sub_parts if p]))
+            else:
+                pieces.append(str(item))
+        return "; ".join([p for p in pieces if p])
+    if isinstance(value, dict):
+        if value and all(isinstance(v, bool) for v in value.values()):
+            enabled = [humanize_identifier(k) for k, v in value.items() if v]
+            return "; ".join(enabled)
+        parts: List[str] = []
+        for key, val in value.items():
+            label = humanize_identifier(str(key))
+            if isinstance(val, bool):
+                if val:
+                    parts.append(label)
+            else:
+                summarized = summarize(val)
+                if summarized:
+                    parts.append(f"{label} — {summarized}")
+        return "; ".join(parts)
+    return str(value)
+
+
+def collect_triggers(triggers: Any) -> List[str]:
+    phrases: List[str] = []
+    if isinstance(triggers, list):
+        for entry in triggers:
+            if isinstance(entry, str):
+                phrases.append(entry.strip())
+            elif isinstance(entry, dict):
+                for key, value in entry.items():
+                    if isinstance(value, str) and key.startswith("when"):
+                        phrases.append(value.strip())
+    elif isinstance(triggers, dict):
+        for key, value in triggers.items():
+            if isinstance(value, str) and key.startswith("when"):
+                phrases.append(value.strip())
+            elif isinstance(value, list):
+                phrases.extend([v.strip() for v in value if isinstance(v, str)])
+    # Preserve order, remove duplicates.
+    seen = set()
+    ordered: List[str] = []
+    for phrase in phrases:
+        if phrase not in seen:
+            seen.add(phrase)
+            ordered.append(phrase)
+    return ordered
+
+
+def build_when_to_use(description: str, triggers: Any) -> Tuple[str, str]:
+    phrases = collect_triggers(triggers)
+    if phrases:
+        clause = "; ".join(phrases)
+        clause = clause.rstrip(".")
+        if clause.lower().startswith("when "):
+            clause = clause[5:]
+        sentence = "when " + clause
+        return sentence, "Derived when_to_use from triggers."
+    if description:
+        desc = description.strip().rstrip(".")
+        if desc.lower().startswith("to "):
+            core = desc[3:].strip()
+            sentence = f"when you need to {core}"
+        else:
+            sentence = f"when you need {desc[0].lower() + desc[1:]}"
+        return sentence, "Inferred when_to_use from metadata description due to missing triggers."
+    sentence = "when the pattern’s core scenario appears and you need structured guidance"
+    return sentence, "Used default guidance because triggers and description were unavailable."
+
+
+def find_checklists(data: Any) -> List[str]:
+    results: List[str] = []
+    if isinstance(data, dict):
+        for key, value in data.items():
+            lower = str(key).lower()
+            if isinstance(value, list) and any(
+                token in lower for token in ("checklist", "preparation", "prerequisite")
+            ):
+                for item in value:
+                    if isinstance(item, str):
+                        results.append(clean_checklist_item(item))
+            elif isinstance(value, dict):
+                results.extend(find_checklists(value))
+            elif isinstance(value, list):
+                for entry in value:
+                    results.extend(find_checklists(entry))
+    return results
+
+
+def is_step_dict(value: Any) -> bool:
+    if not isinstance(value, dict) or not value:
+        return False
+    keys = list(value.keys())
+    stepish = [
+        key
+        for key in keys
+        if isinstance(key, str)
+        and (re.match(r"^\d+", key) or key.lower().startswith("step"))
+    ]
+    return len(stepish) >= max(1, len(keys) // 2)
+
+
+def extract_step_sequences(data: Any) -> List[Tuple[str, Dict[str, Any]]]:
+    sequences: List[Tuple[str, Dict[str, Any]]] = []
+    if isinstance(data, dict):
+        for key, value in data.items():
+            if isinstance(value, dict):
+                if is_step_dict(value):
+                    sequences.append((str(key), value))
+                else:
+                    sequences.extend(extract_step_sequences(value))
+            elif isinstance(value, list):
+                for entry in value:
+                    sequences.extend(extract_step_sequences(entry))
+    return sequences
+
+
+def render_step_body(step_data: Any) -> List[str]:
+    lines: List[str] = []
+    if isinstance(step_data, str):
+        text = ensure_sentence(step_data)
+        lines.append(text)
+        return lines
+    if isinstance(step_data, dict):
+        description = step_data.get("description")
+        if isinstance(description, str):
+            lines.append(ensure_sentence(description))
+        for key, value in step_data.items():
+            if key == "description":
+                continue
+            label = humanize_identifier(str(key))
+            content = summarize(value)
+            if content:
+                lines.append(ensure_sentence(f"{label}: {content}"))
+        return lines
+    if isinstance(step_data, list):
+        for item in step_data:
+            if isinstance(item, str):
+                lines.append(ensure_sentence(item))
+            elif isinstance(item, dict):
+                summarized = summarize(item)
+                if summarized:
+                    lines.append(ensure_sentence(summarized))
+    return lines
+
+
+def render_section_lines(title: str, payload: Any) -> List[str]:
+    lines: List[str] = []
+    if isinstance(payload, list):
+        for item in payload:
+            if isinstance(item, str):
+                text = ensure_sentence(item)
+            else:
+                text = ensure_sentence(summarize(item))
+            if text:
+                lines.append(f"- {text}")
+    elif isinstance(payload, dict):
+        for key, value in payload.items():
+            content = summarize(value)
+            if content:
+                lines.append(f"- {ensure_sentence(humanize_identifier(str(key)) + ': ' + content)}")
+    else:
+        text = summarize(payload)
+        if text:
+            lines.append(ensure_sentence(text))
+    if not lines:
+        return []
+    section = [f"## {title}", ""]
+    section.extend(lines)
+    section.append("")
+    return section
+
+
+def make_table(headers: List[str], rows: List[List[str]]) -> str:
+    header_line = "| " + " | ".join(headers) + " |"
+    separator = "| " + " | ".join(["---"] * len(headers)) + " |"
+    row_lines = ["| " + " | ".join(row) + " |" for row in rows]
+    return "\n".join([header_line, separator, *row_lines])
+
+
+@dataclass
+class ConversionResult:
+    path: Path
+    destination: Path
+    status: str
+    when_to_use: str
+    when_note: str
+    name: str
+    process_sources: List[str]
+    sections_added: List[str]
+    transform_notes: List[str]
+
+
+def convert_pattern(path: Path, *, dry_run: bool) -> ConversionResult | None:
+    try:
+        raw = path.read_text(encoding="utf-8")
+        data = yaml.safe_load(raw)
+    except Exception as exc:  # pylint: disable=broad-except
+        raise RuntimeError(f"Failed to parse {path}: {exc}") from exc
+
+    metadata = data.get("metadata", {}) if isinstance(data, dict) else {}
+    pattern_config = data.get("pattern_config", {}) if isinstance(data, dict) else {}
+    context = data.get("context", {}) if isinstance(data, dict) else {}
+    triggers = data.get("triggers")
+    integration = data.get("integration", {}) if isinstance(data, dict) else {}
+
+    pattern_id = metadata.get("id") or path.parent.name
+    name = metadata.get("name") or slug_to_title(pattern_id)
+    description = metadata.get("description", "").strip()
+    version = metadata.get("version") or metadata.get("pattern_version") or "1.0.0"
+
+    when_to_use, when_note = build_when_to_use(description, triggers)
+
+    front_matter = [
+        "---",
+        f"name: {name}",
+        f"description: {description if description else 'Fill in description'}",
+        f"when_to_use: {when_to_use}",
+        f"version: {version}",
+        "---",
+        "",
+    ]
+
+    body: List[str] = [f"# {name}", ""]
+    sections_added: List[str] = []
+    transform_notes: List[str] = []
+
+    overview = ""
+    if isinstance(context, dict):
+        overview = context.get("framework_overview") or context.get("overview") or ""
+    if not overview and isinstance(pattern_config, dict):
+        overview = pattern_config.get("overview") or ""
+    if not overview and description:
+        overview = description
+    overview = overview.strip()
+    role = context.get("role") if isinstance(context, dict) else None
+    time_estimate = metadata.get("time_estimate")
+    if overview:
+        overview_lines = [overview.strip()]
+        if role and isinstance(role, str):
+            overview_lines.append(ensure_sentence(f"Operate as {role.strip()}"))
+        if time_estimate and isinstance(time_estimate, str):
+            overview_lines.append(ensure_sentence(f"Expected effort: {time_estimate.strip()}"))
+        body.extend(["## Overview", "", "\n".join(overview_lines), ""])
+        sections_added.append("Overview")
+        if role:
+            transform_notes.append("Reinforced role guidance from context.role.")
+        if time_estimate:
+            transform_notes.append("Captured estimated effort from metadata.time_estimate.")
+
+    core_principles: List[str] = []
+    if isinstance(context, dict) and isinstance(context.get("core_principles"), list):
+        core_principles = [
+            item.strip() for item in context["core_principles"] if isinstance(item, str)
+        ]
+    elif isinstance(pattern_config, dict) and isinstance(
+        pattern_config.get("core_principles"), list
+    ):
+        core_principles = [
+            item.strip()
+            for item in pattern_config["core_principles"]
+            if isinstance(item, str)
+        ]
+    if core_principles:
+        body.extend(["## Core Principles", ""])
+        for entry in core_principles:
+            body.append(f"- {entry}")
+        body.append("")
+        sections_added.append("Core Principles")
+
+    preparation_items = find_checklists(pattern_config) + find_checklists(context)
+    if preparation_items:
+        body.extend(["## Preparation Checklist", ""])
+        for item in dict.fromkeys(preparation_items):  # preserve order, drop duplicates
+            body.append(f"- {item}")
+        body.extend(["", "Create TodoWrite items for each checklist entry before continuing.", ""])
+        sections_added.append("Preparation Checklist")
+        transform_notes.append("Converted embedded checklists into preparation tasks.")
+
+    sequences = extract_step_sequences(pattern_config) + extract_step_sequences(context)
+    deduped: List[Tuple[str, Dict[str, Any]]] = []
+    seen = set()
+    for title, seq in sequences:
+        key = (title, tuple(seq.keys()))
+        if key not in seen:
+            seen.add(key)
+            deduped.append((title, seq))
+    if deduped:
+        body.extend(["## Process", ""])
+        step_counter = 1
+        process_sources: List[str] = []
+        for seq_title, seq_dict in deduped:
+            process_sources.append(humanize_identifier(str(seq_title)))
+            for raw_key, value in seq_dict.items():
+                step_title = humanize_identifier(str(raw_key))
+                clean_title = re.sub(r"^Step\\s+\\d+\\s*", "", step_title, flags=re.IGNORECASE).strip()
+                if not clean_title:
+                    clean_title = step_title
+                body.append(f"### Step {step_counter}: {clean_title}")
+                body.append("")
+                lines = render_step_body(value)
+                if lines:
+                    for line in lines:
+                        body.append(f"- {line}")
+                else:
+                    body.append("- Follow the guidance in this step.")
+                body.append("")
+                step_counter += 1
+        body.append("")
+        sections_added.append("Process")
+    else:
+        process_sources = []
+
+    time_horizons = (
+        pattern_config.get("time_horizons")
+        if isinstance(pattern_config, dict)
+        else None
+    )
+    if isinstance(time_horizons, dict) and time_horizons:
+        headers = ["Horizon", "Timeframe", "Focus"]
+        rows: List[List[str]] = []
+        for key, value in time_horizons.items():
+            if not isinstance(value, dict):
+                continue
+            horizon_name = humanize_identifier(str(key))
+            timeframe = value.get("timeframe", "")
+            focus = value.get("focus") or summarize(
+                {k: v for k, v in value.items() if k not in {"timeframe", "focus"}}
+            )
+            rows.append([horizon_name, timeframe, focus])
+        if rows:
+            body.extend(["## Horizon Reference", "", make_table(headers, rows), ""])
+            sections_added.append("Horizon Reference")
+            transform_notes.append("Generated horizon reference table from pattern_config.time_horizons.")
+
+    section_order = [
+        ("decision_factors", "Decision Factors"),
+        ("use_cases", "Use Cases"),
+        ("prompts", "Prompting Guide"),
+        ("red_flags", "Red Flags"),
+        ("green_flags", "Green Flags"),
+        ("warning_signs_misuse", "Misuse Warning Signs"),
+        ("red_flags_indicators", "Warning Indicators"),
+        ("success_metrics", "Success Metrics"),
+        ("output_format", "Outputs"),
+        ("output_structure", "Outputs"),
+        ("psychological_benefits", "Psychological Benefits"),
+        ("opposition_categories", "Opposition Categories"),
+        ("application_domains", "Application Domains"),
+        ("practical_techniques", "Practical Techniques"),
+        ("opposition_tools", "Tools"),
+        ("analysis_axes", "Analysis Axes"),
+        ("evaluation_criteria", "Evaluation Criteria"),
+        ("loops", "Loops"),
+        ("phases", "Phases"),
+        ("workflows", "Workflows"),
+        ("horizons", "Horizon Guidance"),
+    ]
+
+    handled_keys = set()
+
+    def append_section_from(source: Any, key: str, title: str) -> None:
+        if not isinstance(source, dict) or key not in source:
+            return
+        lines = render_section_lines(title, source[key])
+        if lines:
+            body.extend(lines)
+            handled_keys.add(key)
+            sections_added.append(title)
+
+    for key, title in section_order:
+        append_section_from(pattern_config, key, title)
+        append_section_from(context, key, title)
+
+    def append_remaining_sections(source: Any) -> None:
+        if not isinstance(source, dict):
+            return
+        for key, value in source.items():
+            if key in handled_keys:
+                continue
+            if key in {"core_principles", "time_horizons"}:
+                continue
+            if is_step_dict(value):
+                continue
+            if isinstance(value, (dict, list)):
+                lines = render_section_lines(humanize_identifier(str(key)), value)
+                if lines:
+                    body.extend(lines)
+                    handled_keys.add(key)
+                    sections_added.append(humanize_identifier(str(key)))
+
+    append_remaining_sections(pattern_config)
+    append_remaining_sections(context)
+
+    related_lines: List[str] = []
+    if isinstance(integration, dict):
+        for key, value in integration.items():
+            if isinstance(value, list) and value:
+                label = humanize_identifier(str(key))
+                refs = "; ".join(
+                    f"@skills/data/lev-skills/{item}/SKILL.md" for item in value
+                )
+                related_lines.append(f"- {label}: {refs}")
+    if related_lines:
+        body.extend(["## Related Skills", ""])
+        body.extend(related_lines)
+        body.append("")
+        sections_added.append("Related Skills")
+
+    body.extend(
+        [
+            "## Success Signals",
+            "",
+            "Use this skill when the documented outputs and success metrics demonstrate clear, testable insights and next steps for stakeholders.",
+            "",
+        ]
+    )
+    sections_added.append("Success Signals")
+
+    content = "\n".join(front_matter + body).rstrip() + "\n"
+
+    dest_dir = DEST_BASE / pattern_id
+    dest_path = dest_dir / "SKILL.md"
+
+    status = "created"
+    if dest_path.exists():
+        existing = dest_path.read_text(encoding="utf-8")
+        if existing == content:
+            status = "unchanged"
+        else:
+            if not dry_run:
+                dest_dir.mkdir(parents=True, exist_ok=True)
+                dest_path.write_text(content, encoding="utf-8")
+            status = "updated"
+    else:
+        if not dry_run:
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            dest_path.write_text(content, encoding="utf-8")
+        status = "created"
+
+    transform_notes = sorted(set(transform_notes))
+    sections_added = sorted(set(sections_added))
+    process_sources = [source for source in process_sources if source]
+
+    return ConversionResult(
+        path=path,
+        destination=dest_path,
+        status=status,
+        when_to_use=when_to_use,
+        when_note=when_note,
+        name=name,
+        process_sources=process_sources,
+        sections_added=sections_added,
+        transform_notes=transform_notes,
+    )
+
+
+def convert_command(pattern_root: Path, *, dry_run: bool) -> None:
+    pattern_paths = sorted(pattern_root.glob("*/context.yaml"))
+    logs: List[str] = []
+    created = 0
+    updated = 0
+    skipped: List[Tuple[Path, str]] = []
+    results: List[ConversionResult] = []
+
+    for path in pattern_paths:
+        try:
+            result = convert_pattern(path, dry_run=dry_run)
+        except Exception as exc:  # pylint: disable=broad-except
+            logs.append(f"ERROR parsing {path}: {exc}")
+            skipped.append((path, str(exc)))
+            continue
+
+        if result is None:
+            continue
+
+        if result.status == "created":
+            created += 1
+        elif result.status == "updated":
+            updated += 1
+        results.append(result)
+
+        try:
+            rel_dest = result.destination.relative_to(SUPERPOWERS_ROOT)
+        except ValueError:
+            rel_dest = result.destination
+        logs.append(
+            f"Processed {result.path} → {rel_dest} [{result.status}] | when_to_use: {result.when_to_use}"
+        )
+    if results and not dry_run:
+        summary_lines: List[str] = []
+        for item in sorted(results, key=lambda entry: entry.name.lower()):
+            summary_lines.append(f"### {item.name} ({item.status})")
+            summary_lines.append(f"- **Source:** `{item.path}`")
+            try:
+                relative_target = item.destination.relative_to(SUPERPOWERS_ROOT)
+            except ValueError:
+                relative_target = item.destination
+            summary_lines.append(f"- **Target Skill:** `{relative_target}`")
+            summary_lines.append(
+                "- **Mappings:** metadata.description → frontmatter description; triggers/description → when_to_use; extracted step dictionaries → Process; contextual dictionaries → supporting sections."
+            )
+            if item.process_sources:
+                summary_lines.append(
+                    "- **Process Sources:** " + ", ".join(item.process_sources)
+                )
+            if item.sections_added:
+                summary_lines.append(
+                    "- **Sections Added:** " + ", ".join(item.sections_added)
+                )
+            if item.transform_notes:
+                summary_lines.append(
+                    "- **Notes:** " + "; ".join(item.transform_notes)
+                )
+            summary_lines.append(f"- **Assumptions:** {item.when_note}")
+            summary_lines.append("")
+
+        summary_text = "\n".join(summary_lines).rstrip() + "\n"
+        NOTES_PATH.parent.mkdir(parents=True, exist_ok=True)
+        if not NOTES_PATH.exists():
+            NOTES_PATH.write_text(
+                "# Levi Pattern Conversion Notes\n", encoding="utf-8"
+            )
+        existing_text = NOTES_PATH.read_text(encoding="utf-8")
+        marker = f"## {TODAY.isoformat()} — Levi Patterns Batch Conversion"
+        if marker in existing_text:
+            base = existing_text.split(marker)[0].rstrip()
+        else:
+            base = existing_text.rstrip()
+        new_notes = f"{base}\n\n{marker}\n\n{summary_text}"
+        NOTES_PATH.write_text(new_notes, encoding="utf-8")
+
+    for line in logs:
+        print(line)
+
+    print(f"Total created: {created}")
+    print(f"Total updated: {updated}")
+    print(f"Total skipped: {len(skipped)}")
+    if skipped:
+        for path, reason in skipped:
+            print(f"Skipped {path}: {reason}")
+
+
+def read_using_skills(super_root: Path) -> str:
+    skill_path = super_root / "skills/using-skills/SKILL.md"
+    if not skill_path.exists():
+        return "Unable to load using-skills content."
+    return skill_path.read_text(encoding="utf-8").strip()
+
+
+def list_skills(super_root: Path) -> List[str]:
+    finder = super_root / "skills/using-skills/find-skills"
+    if not finder.exists():
+        return ["find-skills tool not found."]
+    try:
+        result = run([str(finder)], check=True, stdout=PIPE, stderr=PIPE, text=True)
+    except Exception as exc:  # pylint: disable=broad-except
+        return [f"Error running find-skills: {exc}"]
+
+    lines: List[str] = []
+    for raw_line in result.stdout.splitlines():
+        raw_line = raw_line.strip()
+        if not raw_line:
+            continue
+        lines.append(raw_line)
+    return lines
+
+
+def session_command(super_root: Path) -> None:
+    now = datetime.now()
+    header = f"<session-start-hook>Current date: {now:%Y-%m-%d},  time: {now:%H:%M:%S}\n"
+
+    using_skills = read_using_skills(super_root)
+    skills_lines = list_skills(super_root)
+    find_path = super_root / "skills/using-skills/find-skills"
+    run_path = super_root / "skills/using-skills/skill-run"
+    skills_root = super_root / "skills"
+
+    sections = [
+        header,
+        "<EXTREMELY_IMPORTANT>",
+        "You have superpowers.\n",
+        "**The content below is from skills/using-skills/SKILL.md - your introduction to using skills:**",
+        "",
+        using_skills,
+        "",
+        "**Tool paths (use these when you need to search for or run skills):**",
+        f"- find-skills: {find_path}",
+        f"- skill-run: {run_path}",
+        "",
+        f"**Skills live in:** {skills_root} (you work on your own branch and can edit any skill)",
+        "",
+        "**Available skills (output of find-skills):**",
+        "",
+    ]
+    sections.extend(skills_lines)
+    sections.append("")
+    sections.append("</EXTREMELY_IMPORTANT></session-start-hook>")
+
+    print("\n".join(sections))
+
+
+def parse_args(argv: Optional[List[str]] = None) -> Namespace:
+    parser = ArgumentParser(description="Levi CLI")
+    subparsers = parser.add_subparsers(dest="command")
+
+    convert_parser = subparsers.add_parser(
+        "convert", help="Convert Levi patterns into Superpowers skills"
+    )
+    convert_parser.add_argument(
+        "--pattern-root",
+        default=str(BASE),
+        help="Directory containing Levi pattern context YAML files.",
+    )
+    convert_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Show actions without writing files or notes.",
+    )
+
+    session_parser = subparsers.add_parser(
+        "session", help="Emit onboarding context for session start."
+    )
+    session_parser.add_argument(
+        "--superpowers-root",
+        default=str(SUPERPOWERS_ROOT),
+        help="Root directory for Superpowers skills.",
+    )
+
+    parser.set_defaults(command="session")
+    return parser.parse_args(argv)
+
+
+def main(argv: Optional[List[str]] = None) -> None:
+    args = parse_args(argv)
+    command = args.command or "session"
+
+    if command == "convert":
+        pattern_root = Path(args.pattern_root).expanduser()
+        convert_command(pattern_root, dry_run=args.dry_run)
+    elif command == "session":
+        super_root = Path(args.superpowers_root).expanduser()
+        session_command(super_root)
+    else:
+        raise ValueError(f"Unknown command: {command}")
+
+
+if __name__ == "__main__":
+    main()

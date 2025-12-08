@@ -1,49 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {},
+  "permissions": {
+    "allow": [],
+    "deny": []
+  },
   "hooks": {
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run ~/.claude/hooks/notification.py --notify"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run ~/.claude/hooks/post_tool_use.py"
-          }
-        ]
-      },
-      {
-        "matcher": "Edit|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [[ \"$CLAUDE_TOOL_FILE_PATH\" == *.js || \"$CLAUDE_TOOL_FILE_PATH\" == *.ts || \"$CLAUDE_TOOL_FILE_PATH\" == *.jsx || \"$CLAUDE_TOOL_FILE_PATH\" == *.tsx ]]; then npx eslint \"$CLAUDE_TOOL_FILE_PATH\" --fix 2>/dev/null || true; elif [[ \"$CLAUDE_TOOL_FILE_PATH\" == *.py ]]; then pylint \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null || true; elif [[ \"$CLAUDE_TOOL_FILE_PATH\" == *.rb ]]; then rubocop \"$CLAUDE_TOOL_FILE_PATH\" --auto-correct 2>/dev/null || true; fi"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run ~/.claude/hooks/pre_compact.py"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "",
@@ -101,10 +63,31 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "input=$(cat); current_dir=\"$(basename \"$(pwd)\")\"; model=\"$(echo \"$input\" | jq -r '.model.display_name // \"Claude\"')\"; session_id=\"$(echo \"$input\" | jq -r '.session_id // \"new\"')\"; if [ -f .archon ]; then status=\"⚡ ARCHON READY\"; elif [ -f package.json ]; then status=\"📦 DEV MODE\"; elif [ -d .git ]; then status=\"🔧 PROJECT\"; else status=\"💻 ONLINE\"; fi; printf '🧙🏽‍♂️ [ROOT@KINGLY] %s | %s | %s | Session: %.8s' \"$current_dir\" \"$status\" \"$model\" \"$session_id\""
+    "command": "bunx -y ccstatusline@latest",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "domain-memory-agent@claude-code-plugins": true,
+    "workflow-orchestrator@claude-code-plugins": true,
+    "overnight-dev@claude-code-plugins": true,
+    "superpowers@superpowers-marketplace": true,
+    "superpowers-chrome@superpowers-marketplace": false,
+    "security-guidance@claude-code-plugins": false,
+    "agent-sdk-dev@claude-code-plugins": false,
+    "pr-review-toolkit@claude-code-plugins": false,
+    "feature-dev@claude-code-plugins": false,
+    "elements-of-style@superpowers-marketplace": false,
+    "compounding-engineering@every-marketplace": false,
+    "document-skills@anthropic-agent-skills": true,
+    "llm-application-dev@claude-code-workflows": true,
+    "data-engineering@claude-code-workflows": true,
+    "data-validation-suite@claude-code-workflows": true,
+    "context-management@claude-code-workflows": true,
+    "code-refactoring@claude-code-workflows": true
   },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754081769578
-  }
+  },
+  "model": "sonnet[1m]"
 }

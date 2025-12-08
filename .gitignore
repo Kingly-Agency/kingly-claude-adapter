@@ -9,3 +9,4 @@ vendor/
 session-env/
 file-history/
 debug/
+history.jsonl
