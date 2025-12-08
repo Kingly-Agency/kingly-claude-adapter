@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "plugins": {
+    "superpowers@superpowers-marketplace": {
+      "version": "3.6.1",
+      "installedAt": "2025-12-03T09:35:17.081Z",
+      "lastUpdated": "2025-12-03T09:35:17.081Z",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/superpowers",
+      "gitCommitSha": "8462c20cce0ca37ff747d80fde4697fd45a98189",
+      "isLocal": false
+    },
+    "elements-of-style@superpowers-marketplace": {
+      "version": "1.0.0",
+      "installedAt": "2025-12-03T11:50:39.630Z",
+      "lastUpdated": "2025-12-03T11:50:39.630Z",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/elements-of-style",
+      "gitCommitSha": "6099c505c2a8eb066f3777f83a97d9d828f7954c",
+      "isLocal": false
+    },
+    "episodic-memory@superpowers-marketplace": {
+      "version": "1.0.13",
+      "installedAt": "2025-12-03T11:50:40.444Z",
+      "lastUpdated": "2025-12-03T11:50:40.444Z",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/episodic-memory",
+      "gitCommitSha": "911b1c7a0bc31931a2883f7be807a5faf29e39e3",
+      "isLocal": false
+    },
+    "superpowers-developing-for-claude-code@superpowers-marketplace": {
+      "version": "0.3.0",
+      "installedAt": "2025-12-03T11:50:41.056Z",
+      "lastUpdated": "2025-12-03T11:50:41.056Z",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/superpowers-developing-for-claude-code",
+      "gitCommitSha": "ba0e369e812bb735d65d1078cc5edb78ed823efe",
+      "isLocal": false
+    },
+    "double-shot-latte@superpowers-marketplace": {
+      "version": "1.1.4",
+      "installedAt": "2025-12-03T11:50:41.506Z",
+      "lastUpdated": "2025-12-03T11:50:41.506Z",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/double-shot-latte",
+      "gitCommitSha": "b8cdbaa9a3dae4f9c5d15480e4541517274ac375",
+      "isLocal": false
+    }
+  }
+}
