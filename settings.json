@@ -2,147 +2,10 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {},
   "permissions": {
-    "allow": [
-      "mcp__desktop-commander__search_files",
-      "mcp__desktop-commander__search_code",
-      "mcp__desktop-commander__list_directory",
-      "Bash(find:*)",
-      "Bash(mkdir:*)",
-      "Bash(grep:*)",
-      "Bash(pnpm run test:*)",
-      "mcp__desktop-commander__read_file",
-      "mcp__desktop-commander__edit_block",
-      "Bash(./agent/bin/lev:*)",
-      "Bash(pnpm test:*)",
-      "mcp__desktop-commander__execute_command",
-      "Bash(./bin/lev find:*)",
-      "Bash(ls:*)",
-      "Bash(CONTEXTS_PATH=\"./contexts\" ./bin/lev checkpoint --new \"working on authentication system\" 2>&1)",
-      "Bash(CONTEXTS_PATH=\"./contexts\" ./bin/lev checkpoint --new \"working on authentication system\")",
-      "Bash(echo:*)",
-      "Bash(node:*)",
-      "Bash(node:*)",
-      "Bash(CONTEXTS_PATH=\"./contexts\" ./bin/lev checkpoint --final \"feature complete and tested\")",
-      "Bash(npm run test:workflows:*)",
-      "Bash(./bin/lev:*)",
-      "mcp__perplexity-ask__perplexity_ask",
-      "Bash(/Users/jean-patricksmith/digital/leviathan/plugins/@lev-os/workshop/tests/workshop.test.js)",
-      "Bash(timeout:*)",
-      "Bash(git branch:*)",
-      "Bash(cp:*)",
-      "Bash(git worktree:*)",
-      "mcp__desktop-commander__read_multiple_files",
-      "mcp__brave-search__brave_web_search",
-      "mcp__desktop-commander__create_directory",
-      "Bash(git for-each-ref:*)",
-      "Bash(npm run test:constitutional:*)",
-      "mcp__desktop-commander__create_directory",
-      "mcp__desktop-commander__write_file",
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:www.npmjs.com)",
-      "WebFetch(domain:docs.mastra.ai)",
-      "Bash(npm run test:architectural:*)",
-      "Bash(mv:*)",
-      "mcp__desktop-commander__move_file",
-      "Bash(/Users/jean-patricksmith/digital/_infra/graphiti/mcp_server/.venv/bin/python -c \"from graphiti_core import Graphiti; print('✅ Graphiti core imported successfully')\")",
-      "Bash(source:*)",
-      "Bash(pip install:*)",
-      "Bash(python:*)",
-      "mcp__firecrawl__firecrawl_scrape",
-      "Bash(chmod:*)",
-      "Bash(pnpm add:*)",
-      "Bash(pnpm install:*)",
-      "Bash(git clone:*)",
-      "Bash(chmod:*)",
-      "Bash(npm install:*)",
-      "Bash(magick:*)",
-      "Bash(curl:*)",
-      "Bash(rsync:*)",
-      "mcp__desktop-commander__move_file",
-      "Bash(mv:*)",
-      "Bash(true)",
-      "Bash(pnpm typecheck:*)",
-      "Bash(pnpm build:*)",
-      "Bash(touch:*)",
-      "Bash(wget:*)",
-      "mcp__desktop-commander__get_file_info",
-      "mcp__perplexity-ask_1__perplexity_research",
-      "Bash(pnpm list:*)",
-      "mcp__perplexity-ask_1__perplexity_research",
-      "Bash(turbo gen:*)",
-      "Bash(CONTEXTS_PATH=\"$HOME/digital/leviathan/agent/contexts\" node \"$HOME/digital/leviathan/agent/src/adapters/cli/cli-entry.js\" --help)",
-      "Bash(npm test)",
-      "Bash(rg:*)",
-      "Bash(screenpipe:*)",
-      "mcp__desktop-commander__read_output",
-      "WebFetch(domain:docs.screenpi.pe)",
-      "WebFetch(domain:docs.anthropic.com)",
-      "Bash(for:*)",
-      "Bash(do mkdir -p /Users/jean-patricksmith/digital/leviathan/concepts/$dir/{docs,research,code,adr,bdd,specs})",
-      "Bash(done)",
-      "Bash(sqlite3:*)",
-      "mcp__desktop-commander__get_config",
-      "Bash(tree:*)",
-      "Bash(do echo \"=== $dir ===\")",
-      "Bash(stat:*)",
-      "Bash(lev find:*)",
-      "Bash(eza:*)",
-      "WebFetch(domain:arxiv.org)",
-      "Bash(eza:*)",
-      "mcp__fetch-mcp__fetch_youtube_transcript",
-      "mcp__perplexity-ask_1__perplexity_ask",
-      "mcp__desktop-commander__list_sessions",
-      "Bash(pnpm fetch:upstream:*)",
-      "mcp__desktop-commander__force_terminate",
-      "WebFetch(domain:docs.github.com)",
-      "Bash(-exec grep -A2 -B2 \"prompt_template\" {})"
-    ],
+    "allow": [],
     "deny": []
   },
-  "model": "sonnet[1m]",
   "hooks": {
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run ~/.claude/hooks/notification.py --notify"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run ~/.claude/hooks/post_tool_use.py"
-          }
-        ]
-      },
-      {
-        "matcher": "Edit|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [[ \"$CLAUDE_TOOL_FILE_PATH\" == *.js || \"$CLAUDE_TOOL_FILE_PATH\" == *.ts || \"$CLAUDE_TOOL_FILE_PATH\" == *.jsx || \"$CLAUDE_TOOL_FILE_PATH\" == *.tsx ]]; then npx eslint \"$CLAUDE_TOOL_FILE_PATH\" --fix 2>/dev/null || true; elif [[ \"$CLAUDE_TOOL_FILE_PATH\" == *.py ]]; then pylint \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null || true; elif [[ \"$CLAUDE_TOOL_FILE_PATH\" == *.rb ]]; then rubocop \"$CLAUDE_TOOL_FILE_PATH\" --auto-correct 2>/dev/null || true; fi"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run ~/.claude/hooks/pre_compact.py"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "",
@@ -200,16 +63,31 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "input=$(cat); current_dir=\"$(basename \"$(pwd)\")\"; model=\"$(echo \"$input\" | jq -r '.model.display_name // \"Claude\"')\"; session_id=\"$(echo \"$input\" | jq -r '.session_id // \"new\"')\"; if [ -f .archon ]; then status=\"⚡ ARCHON READY\"; elif [ -f package.json ]; then status=\"📦 DEV MODE\"; elif [ -d .git ]; then status=\"🔧 PROJECT\"; else status=\"💻 ONLINE\"; fi; printf '🧙🏽‍♂️ [ROOT@KINGLY] %s | %s | %s | Session: %.8s' \"$current_dir\" \"$status\" \"$model\" \"$session_id\""
+    "command": "bunx -y ccstatusline@latest",
+    "padding": 0
   },
   "enabledPlugins": {
     "domain-memory-agent@claude-code-plugins": true,
     "workflow-orchestrator@claude-code-plugins": true,
     "overnight-dev@claude-code-plugins": true,
-    "superpowers@superpowers-marketplace": true
+    "superpowers@superpowers-marketplace": true,
+    "superpowers-chrome@superpowers-marketplace": false,
+    "security-guidance@claude-code-plugins": false,
+    "agent-sdk-dev@claude-code-plugins": false,
+    "pr-review-toolkit@claude-code-plugins": false,
+    "feature-dev@claude-code-plugins": false,
+    "elements-of-style@superpowers-marketplace": false,
+    "compounding-engineering@every-marketplace": false,
+    "document-skills@anthropic-agent-skills": true,
+    "llm-application-dev@claude-code-workflows": true,
+    "data-engineering@claude-code-workflows": true,
+    "data-validation-suite@claude-code-workflows": true,
+    "context-management@claude-code-workflows": true,
+    "code-refactoring@claude-code-workflows": true
   },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754081769578
-  }
+  },
+  "model": "sonnet[1m]"
 }
