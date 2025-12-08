@@ -1,0 +1,10 @@
+{
+  "claude-code-plugins": {
+    "source": {
+      "source": "github",
+      "repo": "jeremylongshore/claude-code-plugins"
+    },
+    "installLocation": "/Users/jean-patricksmith/.claude/plugins/marketplaces/claude-code-plugins",
+    "lastUpdated": "2025-10-11T07:23:20.454Z"
+  }
+}

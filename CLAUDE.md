@@ -31,6 +31,17 @@
 - NEVER: create files unless they're absolutely necessary for achieving your goal.
 
 
+## MANDATORY: RULES TO APPLY THROUGHOUT A SESSION
+
+- ALWAYS: prefer editing an existing file to creating a new one.
+
+- Use perplexity MCP (reason for complexity, search for quick answers) when debating, planning, or verifying if you are not 100% confident.
+
+- WHEN: You are planning, scanning, reading, always read everything and ask questions if you are not 100% confident. Never operate on assumptions or false confidence.
+
+- NEVER: create files unless they're absolutely necessary for achieving your goal.
+
+
 ## 🧠 DIALOGUE & RESPONSE INTELLIGENCE
 
 ### Core Response Framework
