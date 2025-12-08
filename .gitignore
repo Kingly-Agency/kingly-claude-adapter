@@ -8,3 +8,4 @@ logs/
 vendor/
 file-history/
 debug/
+history.jsonl
