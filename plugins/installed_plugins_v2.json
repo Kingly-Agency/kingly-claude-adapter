@@ -1,0 +1,93 @@
+{
+  "version": 2,
+  "plugins": {
+    "superpowers@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/superpowers-marketplace/superpowers/3.2.3",
+        "version": "3.2.3",
+        "installedAt": "2025-10-27T06:12:30.693Z",
+        "lastUpdated": "2025-10-27T06:12:30.693Z",
+        "gitCommitSha": "19e2997334eef29d0b4ab3c40a4bc124d200d1fb",
+        "isLocal": false
+      }
+    ],
+    "superpowers-chrome@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/superpowers-marketplace/superpowers-chrome/1.3.0",
+        "version": "1.3.0",
+        "installedAt": "2025-10-27T06:12:29.019Z",
+        "lastUpdated": "2025-10-27T06:12:29.019Z",
+        "gitCommitSha": "8a8eb68ddbd189b0db7b9d701d3c74493c57dccc",
+        "isLocal": false
+      }
+    ],
+    "elements-of-style@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/superpowers-marketplace/elements-of-style/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2025-10-27T06:12:29.019Z",
+        "lastUpdated": "2025-10-27T06:12:29.019Z",
+        "gitCommitSha": "6099c505c2a8eb066f3777f83a97d9d828f7954c",
+        "isLocal": false
+      }
+    ],
+    "llm-application-dev@claude-code-workflows": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/claude-code-workflows/llm-application-dev/ddbd034ca35c",
+        "version": "ddbd034ca35c",
+        "installedAt": "2025-12-07T07:50:28.680Z",
+        "lastUpdated": "2025-12-07T07:50:28.680Z",
+        "gitCommitSha": "ddbd034ca35c6e76af6e54891d83a646e7837b1c",
+        "isLocal": true
+      }
+    ],
+    "data-engineering@claude-code-workflows": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/claude-code-workflows/data-engineering/ddbd034ca35c",
+        "version": "ddbd034ca35c",
+        "installedAt": "2025-12-07T07:50:28.680Z",
+        "lastUpdated": "2025-12-07T07:50:28.680Z",
+        "gitCommitSha": "ddbd034ca35c6e76af6e54891d83a646e7837b1c",
+        "isLocal": true
+      }
+    ],
+    "data-validation-suite@claude-code-workflows": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/claude-code-workflows/data-validation-suite/ddbd034ca35c",
+        "version": "ddbd034ca35c",
+        "installedAt": "2025-12-07T07:50:28.680Z",
+        "lastUpdated": "2025-12-07T07:50:28.680Z",
+        "gitCommitSha": "ddbd034ca35c6e76af6e54891d83a646e7837b1c",
+        "isLocal": true
+      }
+    ],
+    "context-management@claude-code-workflows": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/claude-code-workflows/context-management/ddbd034ca35c",
+        "version": "ddbd034ca35c",
+        "installedAt": "2025-12-07T07:50:28.680Z",
+        "lastUpdated": "2025-12-07T07:50:28.680Z",
+        "gitCommitSha": "ddbd034ca35c6e76af6e54891d83a646e7837b1c",
+        "isLocal": true
+      }
+    ],
+    "code-refactoring@claude-code-workflows": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/claude-code-workflows/code-refactoring/ddbd034ca35c",
+        "version": "ddbd034ca35c",
+        "installedAt": "2025-12-07T07:50:28.680Z",
+        "lastUpdated": "2025-12-07T07:50:28.680Z",
+        "gitCommitSha": "ddbd034ca35c6e76af6e54891d83a646e7837b1c",
+        "isLocal": true
+      }
+    ]
+  }
+}

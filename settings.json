@@ -5,6 +5,7 @@
     "allow": [],
     "deny": []
   },
+  "model": "sonnet[1m]",
   "hooks": {
     "PreToolUse": [
       {
@@ -88,6 +89,5 @@
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754081769578
-  },
-  "model": "sonnet[1m]"
+  }
 }

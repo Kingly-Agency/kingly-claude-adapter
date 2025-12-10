@@ -5,7 +5,7 @@
       "version": "3.2.3",
       "installedAt": "2025-10-27T06:12:30.693Z",
       "lastUpdated": "2025-10-27T06:12:30.693Z",
-      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/superpowers",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/superpowers-marketplace/superpowers/3.2.3",
       "gitCommitSha": "19e2997334eef29d0b4ab3c40a4bc124d200d1fb",
       "isLocal": false
     },
@@ -13,7 +13,7 @@
       "version": "1.3.0",
       "installedAt": "2025-10-27T06:12:29.019Z",
       "lastUpdated": "2025-10-27T06:12:29.019Z",
-      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/superpowers-chrome",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/superpowers-marketplace/superpowers-chrome/1.3.0",
       "gitCommitSha": "8a8eb68ddbd189b0db7b9d701d3c74493c57dccc",
       "isLocal": false
     },
@@ -21,7 +21,7 @@
       "version": "1.0.0",
       "installedAt": "2025-10-27T06:12:29.019Z",
       "lastUpdated": "2025-10-27T06:12:29.019Z",
-      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/elements-of-style",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/superpowers-marketplace/elements-of-style/1.0.0",
       "gitCommitSha": "6099c505c2a8eb066f3777f83a97d9d828f7954c",
       "isLocal": false
     },
@@ -29,7 +29,7 @@
       "version": "ddbd034ca35c",
       "installedAt": "2025-12-07T07:50:28.680Z",
       "lastUpdated": "2025-12-07T07:50:28.680Z",
-      "installPath": "/Users/jean-patricksmith/.claude/plugins/marketplaces/claude-code-workflows/plugins/llm-application-dev",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/claude-code-workflows/llm-application-dev/ddbd034ca35c",
       "gitCommitSha": "ddbd034ca35c6e76af6e54891d83a646e7837b1c",
       "isLocal": true
     },
@@ -37,7 +37,7 @@
       "version": "ddbd034ca35c",
       "installedAt": "2025-12-07T07:50:28.680Z",
       "lastUpdated": "2025-12-07T07:50:28.680Z",
-      "installPath": "/Users/jean-patricksmith/.claude/plugins/marketplaces/claude-code-workflows/plugins/data-engineering",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/claude-code-workflows/data-engineering/ddbd034ca35c",
       "gitCommitSha": "ddbd034ca35c6e76af6e54891d83a646e7837b1c",
       "isLocal": true
     },
@@ -45,7 +45,7 @@
       "version": "ddbd034ca35c",
       "installedAt": "2025-12-07T07:50:28.680Z",
       "lastUpdated": "2025-12-07T07:50:28.680Z",
-      "installPath": "/Users/jean-patricksmith/.claude/plugins/marketplaces/claude-code-workflows/plugins/data-validation-suite",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/claude-code-workflows/data-validation-suite/ddbd034ca35c",
       "gitCommitSha": "ddbd034ca35c6e76af6e54891d83a646e7837b1c",
       "isLocal": true
     },
@@ -53,7 +53,7 @@
       "version": "ddbd034ca35c",
       "installedAt": "2025-12-07T07:50:28.680Z",
       "lastUpdated": "2025-12-07T07:50:28.680Z",
-      "installPath": "/Users/jean-patricksmith/.claude/plugins/marketplaces/claude-code-workflows/plugins/context-management",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/claude-code-workflows/context-management/ddbd034ca35c",
       "gitCommitSha": "ddbd034ca35c6e76af6e54891d83a646e7837b1c",
       "isLocal": true
     },
@@ -61,7 +61,7 @@
       "version": "ddbd034ca35c",
       "installedAt": "2025-12-07T07:50:28.680Z",
       "lastUpdated": "2025-12-07T07:50:28.680Z",
-      "installPath": "/Users/jean-patricksmith/.claude/plugins/marketplaces/claude-code-workflows/plugins/code-refactoring",
+      "installPath": "/Users/jean-patricksmith/.claude/plugins/cache/claude-code-workflows/code-refactoring/ddbd034ca35c",
       "gitCommitSha": "ddbd034ca35c6e76af6e54891d83a646e7837b1c",
       "isLocal": true
     }

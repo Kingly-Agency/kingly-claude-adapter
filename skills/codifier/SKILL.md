@@ -92,7 +92,7 @@ skill-seekers unified --config configs/react_unified.json
 skill-seekers package output/react/
 ```
 
-**Custom unified config**: See `references/unified-skills.md`
+**Custom unified config**: See `references/advanced-workflows.md` (Unified Multi-Source section)
 
 ## Output & Delivery
 
@@ -110,11 +110,10 @@ All workflows create a `.zip` file in `output/<name>.zip`. Direct users to:
 
 ## References
 
-- **references/setup.md** - Complete installation with environment detection
-- **references/advanced-workflows.md** - Large docs, async mode, custom configs
-- **references/unified-skills.md** - Multi-source documentation with conflict detection
-- **references/config-guide.md** - Creating and customizing configurations
+- **references/setup.md** - Complete installation with environment detection (uv/venv/pip)
+- **references/advanced-workflows.md** - Large docs, async mode, unified multi-source, custom configs, performance optimization
 - **references/troubleshooting.md** - Common issues and solutions
-- **references/skill-seekers-reference.md** - Full Skill_Seekers documentation
+
+**For Skill_Seekers deep reference:** After installation, refer to cloned Skill_Seekers repository documentation (README.md, docs/CLAUDE.md, and other docs/ files).
 
 Load references as needed based on user context and questions.
