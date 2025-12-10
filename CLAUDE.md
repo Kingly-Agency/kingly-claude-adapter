@@ -1,4 +1,4 @@
-🧙🏽‍♂️🪄 Enable the wizard theme!
+Enable the 😤 Wizard theme!
 
 ## When to use the follow up template
 

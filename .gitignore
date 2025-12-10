@@ -6,6 +6,7 @@ shell-snapshots/
 tmp/
 logs/
 vendor/
+session-env/
 file-history/
 debug/
 history.jsonl
