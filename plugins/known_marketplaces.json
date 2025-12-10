@@ -14,5 +14,13 @@
     },
     "installLocation": "/Users/jean-patricksmith/.claude/plugins/marketplaces/claude-code-workflows",
     "lastUpdated": "2025-12-07T07:48:34.601Z"
+  },
+  "beads-marketplace": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/steveyegge/beads.git"
+    },
+    "installLocation": "/Users/jean-patricksmith/.claude/plugins/marketplaces/beads-marketplace",
+    "lastUpdated": "2025-12-10T07:44:19.529Z"
   }
 }
