@@ -5,6 +5,7 @@
     "allow": [],
     "deny": []
   },
+  "model": "sonnet[1m]",
   "hooks": {
     "PreCompact": [
       {
